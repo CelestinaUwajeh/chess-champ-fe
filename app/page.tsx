@@ -5,6 +5,10 @@ import missionImg from "/public/mission-img.png";
 import ListCard from "@/components/list-card";
 import { whyItWorks } from "./why-it-works";
 import crown from "/public/crown.svg";
+import Pricing from "./pricing-section";
+import { pricing } from "./pricing";
+import Testimonials from "@/components/testimonial";
+import { testimonies } from "@/components/testimonial/demo-test";
 
 export default function Home() {
   return (
@@ -69,6 +73,24 @@ export default function Home() {
             icon: crown,
           }}
         />
+        <Pricing data={pricing} />
+      </section>
+      <section className="py-[101px] px-[120px] font-mont">
+        <PageSectionHeader
+          data={{
+            leftText: "Testimonials",
+            sideToColor: "left",
+            strokeWidth: "w-[250px]",
+            extraStyles: "mb-6",
+          }}
+        />
+        <p className="text-center font-semibold text-black text-2xl mb-4">
+          We don&apos;t just talk, <span className="text-main">we Act</span>
+        </p>
+        <p className="text-center">
+          Here&apos;s why parents and teachers love chess champs
+        </p>
+        <Testimonials data={testimonies} />
       </section>
     </main>
   );
