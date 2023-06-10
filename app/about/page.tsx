@@ -1,6 +1,9 @@
 import Hero from "@/components/hero";
 import MissionSection from "@/components/mission-section";
 import missionImg from "/public/about-mission-img.png";
+import Partners from "./partners/partners";
+import { partners } from "./partners/demo-partners";
+import Kickstart from "./kickstart";
 
 const About = () => {
   return (
@@ -33,6 +36,15 @@ const About = () => {
             founder: { name: "Celestina Edun", title: "Founder & CEO" },
           }}
         />
+      </section>
+      <section className="bg-lightGrey py-[101px] px-[120px]">
+        <h3 className="text-3xl font-mont font-bold text-center mb-12">
+          Meet our Partners
+        </h3>
+        <Partners data={partners} />
+      </section>
+      <section className="bg-white pt-16 px-[120px]">
+        <Kickstart />
       </section>
     </main>
   );

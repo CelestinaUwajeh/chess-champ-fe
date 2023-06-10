@@ -28,7 +28,7 @@ const Hero = ({ data }: PropType) => {
       >
         <div className="h-full flex flex-col justify-center max-w-2xl pl-[120px] gap-4 z-20 relative">
           <h1 className="font-mont font-extrabold text-5xl">{header}</h1>
-          <p className="font-robo text-lg">{description}</p>
+          <p className="font-mont text-lg">{description}</p>
           <AppButton
             isLink
             to={href}

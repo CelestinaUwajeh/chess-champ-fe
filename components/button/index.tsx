@@ -91,7 +91,7 @@ const AppButton = ({
     variantStyles[variant].text
   } ${variantStyles[variant].borderWidth} ${
     variantStyles[variant].border
-  } rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center gap-3 radius no-underline border-solid ${dimension(
+  } rounded-[40px] text-sm whitespace-nowrap font-mont font-medium px-6 flex items-center justify-center gap-3 radius no-underline border-solid ${dimension(
     "height"
   )} ${dimension("width")} bg-[${variantStyles[variant]}] ${
     variant === "secondary" ? "bg-clip-text text-transparent bg-mainBg" : ""
