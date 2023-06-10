@@ -3,8 +3,9 @@
 import { ReactNode } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
+import React from "react";
 
-interface ButtonProps {
+interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   children: JSX.Element | JSX.Element[] | string;
   isLink?: boolean;
   to?: string;
@@ -35,79 +36,87 @@ const MotionButton = ({
   );
 };
 
-const AppButton = ({
-  children,
-  isLink = false,
-  to = "/",
-  size = "medium",
-  variant = "primary",
-  height,
-  width,
-}: ButtonProps) => {
-  type ButtonPropsSize = ButtonProps["size"];
+const AppButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      isLink = false,
+      to = "/",
+      size = "medium",
+      variant = "primary",
+      height,
+      width,
+      ...props
+    }: ButtonProps,
+    ref
+  ) => {
+    type ButtonPropsSize = ButtonProps["size"];
 
-  const sizeVariants: {
-    [key in ButtonPropsSize]: { height: string; width: string };
-  } = {
-    small: {
-      height: height || "h-8",
-      width: width || "w-20",
-    },
-    medium: {
-      height: height || "h-10",
-      width: width || "w-24",
-    },
-    large: {
-      height: height || "h-12",
-      width: width || "w-72",
-    },
-  };
-
-  const variantStyles: {
-    [key in ButtonProps["variant"]]: {
-      bg: string;
-      text: string;
-      border?: string;
-      borderWidth?: string;
+    const sizeVariants: {
+      [key in ButtonPropsSize]: { height: string; width: string };
+    } = {
+      small: {
+        height: height || "h-8",
+        width: width || "w-20",
+      },
+      medium: {
+        height: height || "h-10",
+        width: width || "w-24",
+      },
+      large: {
+        height: height || "h-12",
+        width: width || "w-72",
+      },
     };
-  } = {
-    primary: {
-      bg: "bg-mainBg",
-      text: "text-white",
-    },
-    secondary: {
-      bg: "bg-white",
-      text: "text-black",
-      border: "border-main",
-      borderWidth: "border-2",
-    },
-  };
 
-  const dimension = (dim: "height" | "width") => {
-    return `${sizeVariants[size][dim]}`;
-  };
+    const variantStyles: {
+      [key in ButtonProps["variant"]]: {
+        bg: string;
+        text: string;
+        border?: string;
+        borderWidth?: string;
+      };
+    } = {
+      primary: {
+        bg: "bg-mainBg",
+        text: "text-white",
+      },
+      secondary: {
+        bg: "bg-white",
+        text: "text-black",
+        border: "border-main",
+        borderWidth: "border-2",
+      },
+    };
 
-  const buttonClass = `${variantStyles[variant].bg} ${
-    variantStyles[variant].text
-  } ${variantStyles[variant].borderWidth} ${
-    variantStyles[variant].border
-  } rounded-[40px] text-sm whitespace-nowrap font-mont font-medium px-6 flex items-center justify-center gap-3 radius no-underline border-solid ${dimension(
-    "height"
-  )} ${dimension("width")} bg-[${variantStyles[variant]}] ${
-    variant === "secondary" ? "bg-clip-text text-transparent bg-mainBg" : ""
-  }`;
+    const dimension = (dim: "height" | "width") => {
+      return `${sizeVariants[size][dim]}`;
+    };
 
-  return (
-    <MotionButton>
-      {isLink ? (
-        <Link href={to} className={buttonClass}>
-          {children}
-        </Link>
-      ) : (
-        <button className={buttonClass}>{children}</button>
-      )}
-    </MotionButton>
-  );
-};
+    const buttonClass = `${variantStyles[variant].bg} ${
+      variantStyles[variant].text
+    } ${variantStyles[variant].borderWidth} ${
+      variantStyles[variant].border
+    } rounded-[40px] text-sm whitespace-nowrap font-mont font-medium px-6 flex items-center justify-center gap-3 radius no-underline border-solid ${dimension(
+      "height"
+    )} ${dimension("width")} bg-[${variantStyles[variant]}] ${
+      variant === "secondary" ? "bg-clip-text text-transparent bg-mainBg" : ""
+    }`;
+
+    return (
+      <MotionButton>
+        {isLink ? (
+          <Link href={to} className={buttonClass}>
+            {children}
+          </Link>
+        ) : (
+          <button ref={ref} {...props} className={buttonClass}>
+            {children}
+          </button>
+        )}
+      </MotionButton>
+    );
+  }
+);
 
 export default AppButton;
