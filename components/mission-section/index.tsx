@@ -21,7 +21,7 @@ const MissionSection = ({
   data: { image, header, text, founder, hasButton },
 }: PropType) => {
   return (
-    <div className="flex gap-8 justify-center">
+    <div className="flex flex-col lg:flex-row gap-8 justify-center">
       <Image src={image} alt="image" className="flex-1" />
       <div className="flex-1">
         <h3 className="font-mont font-semibold text-2xl mb-6 text-black">

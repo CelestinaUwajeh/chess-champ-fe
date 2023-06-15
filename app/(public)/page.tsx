@@ -1,3 +1,5 @@
+import dynamic from "next/dynamic";
+
 import Hero from "@/components/hero";
 import MissionSection from "@/components/mission-section";
 import PageSectionHeader from "@/components/page-section_header";
@@ -5,31 +7,34 @@ import missionImg from "/public/mission-img.png";
 import ListCard from "@/components/list-card";
 import { whyItWorks } from "./why-it-works";
 import crown from "/public/crown.svg";
+import { testimonies } from "@/components/testimonial/demo-test";
 import Pricing from "./pricing-section";
 import { pricing } from "./pricing";
-import Testimonials from "@/components/testimonial";
-import { testimonies } from "@/components/testimonial/demo-test";
+
+const Testimonials = dynamic(() => import("@/components/testimonial"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
     <main className="">
       <Hero
         data={{
-          image: "bg-home-bg",
+          image: "lg:bg-home-bg",
           header: "Unlock Your Child’s Innate Abilities Through Chess ",
           description:
             "At Chess Champs we teach young individuals how to play chess from the comfort of their homes.",
           link: { href: "/sign-up", text: "Sign Up" },
         }}
       />
-      <section className="bg-lightGrey py-[101px] px-[120px]">
+      <section className=" bg-lightGrey px-3 py-3 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "Our",
             rightText: "Mission",
             sideToColor: "right",
             strokeWidth: "w-[223px]",
-            extraStyles: "mb-14",
+            extraStyles: "mb-7 lg:mb-14",
           }}
         />
         <MissionSection
@@ -47,7 +52,7 @@ export default function Home() {
           }}
         />
       </section>
-      <section className="py-[101px] px-[120px]">
+      <section className="border px-3 py-3 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "Why",
@@ -63,7 +68,7 @@ export default function Home() {
           }}
         />
       </section>
-      <section className="py-[101px] px-[120px] bg-bgPink">
+      <section className="border px-3 py-3 lg:py-[101px] lg:px-[120px] bg-bgPink">
         <PageSectionHeader
           data={{
             leftText: "Pricing",
@@ -75,7 +80,7 @@ export default function Home() {
         />
         <Pricing data={pricing} />
       </section>
-      <section className="py-[101px] px-[120px] font-mont">
+      <section className="overflow-hidden border px-3 py-3 lg:py-[101px] lg:px-[120px] font-mont">
         <PageSectionHeader
           data={{
             leftText: "Testimonials",

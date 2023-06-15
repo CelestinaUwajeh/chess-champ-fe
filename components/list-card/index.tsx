@@ -15,7 +15,11 @@ const ListCard = ({
   data: { hasSideLines = false, items },
 }: ListCarPropType) => {
   return (
-    <div className={`grid grid-cols-2 ${hasSideLines ? "" : "gap-20"}`}>
+    <div
+      className={`grid grid-cols-1 lg:grid-cols-2 ${
+        hasSideLines ? "" : "gap-20"
+      }`}
+    >
       {items.map(({ listType, header, text }, index) => (
         <div key={index} className="flex font-mont">
           {hasSideLines && (

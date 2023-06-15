@@ -98,7 +98,7 @@
 
 .hero::after {
   content: "";
-  @apply absolute bg-white w-[55%] h-[100%] bottom-0 right-0 -rotate-[70deg] -translate-x-[72%] -translate-y-6;
+  @apply hidden lg:block absolute bg-white w-[55%] h-[100%] bottom-0 right-0 -rotate-[70deg] -translate-x-[72%] -translate-y-6;
 }
 
 .slick-slider {
@@ -115,6 +115,6 @@
 
 @media screen and (max-width: 1024px) {
   .slick-dots {
-    @apply !bottom-[-20px];
+    @apply !bottom-[-62px];
   }
 }

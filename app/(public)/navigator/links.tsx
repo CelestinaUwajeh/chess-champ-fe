@@ -29,15 +29,14 @@ export const navLinks = [
     link: "sponsor",
   },
 ];
-
 const NavLinks = () => {
   const pathname = usePathname();
 
   return (
-    <div className="flex items-center justify-center gap-8 font-mont">
+    <div className="hidden lg:flex flex-col lg:flex-row items-start lg:items-center justify-center gap-4 lg:gap-8 font-mont">
       {navLinks.map((link) => {
         const isActive = pathname.endsWith(link.link);
-        console.log(pathname);
+
         return (
           <Link
             href={link.link}
