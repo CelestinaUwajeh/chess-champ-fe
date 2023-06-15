@@ -1,7 +1,7 @@
 "use client";
 
-import parentCartoon from "/public/parent-cartoon.png";
-import tutorCartoon from "/public/tutor-cartoon.png";
+import parentCartoon from "/public/parent-auth-cartoon.png";
+import tutorCartoon from "/public/tutor-auth-cartoon.png";
 import studentCartoon from "/public/student-cartoon.png";
 import generalCartoon from "/public/kickstart-cartoon.png";
 import { usePathname } from "next/navigation";
