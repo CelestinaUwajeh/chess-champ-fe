@@ -48,7 +48,7 @@ const SponsorForm = () => {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 pb-14 px-14 font-mont"
+        className="space-y-8 pb-14 p-3 lg:px-14 font-mont"
       >
         <div className="flex flex-col lg:flex-row gap-8">
           <FormField

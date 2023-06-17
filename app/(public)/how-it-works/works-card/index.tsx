@@ -14,13 +14,15 @@ const WorksCard = ({ data }: WorksCardPropType) => {
   const { image, header, todos, imageLoc = "left" } = data || {};
   return (
     <div
-      className={`flex gap-14 font-mont ${
+      className={`flex flex-col lg:flex-row gap-8 lg:gap-14 font-mont ${
         imageLoc === "left" ? "flex-row" : "flex-row-reverse"
       }`}
     >
       <Image src={image} alt={header} className="flex-1" />
       <div>
-        <h4 className="text-3xl leading-9 mb-8 font-semibold">{header}</h4>
+        <h4 className="text-base lg:text-3xl leading-9 mb-8 font-semibold">
+          {header}
+        </h4>
         <div className="flex flex-col gap-7">
           {todos.map((todo) => {
             return (
@@ -28,7 +30,7 @@ const WorksCard = ({ data }: WorksCardPropType) => {
                 <div className="w-5 h-5 rounded-full bg-main flex items-center justify-center">
                   <AiOutlineCheck className="text-white" />
                 </div>
-                <span>{todo}</span>
+                <span className="text-sm lg:text-base">{todo}</span>
               </div>
             );
           })}

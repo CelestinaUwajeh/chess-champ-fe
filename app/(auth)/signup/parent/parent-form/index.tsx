@@ -3,6 +3,8 @@
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
+
 import {
   Form,
   FormControl,
@@ -13,10 +15,8 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import AppButton from "@/components/button";
-import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
-import Link from "next/link";
 
 const formSchema = z
   .object({
@@ -143,7 +143,7 @@ const ParentForm = () => {
           size="medium"
           width="w-[134px]"
         >
-          Submit
+          Sign Up
         </AppButton>
       </div>
     </Form>

@@ -31,8 +31,14 @@ const LayoutImg = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])();
 
+  const shouldNotDisplay = pathname.endsWith("signin");
+
   return (
-    <div className=" h-96 relative overflow-y-hidden">
+    <div
+      className={`${
+        shouldNotDisplay ? "hidden" : "block"
+      } h-96 relative overflow-y-hidden`}
+    >
       <div className=" w-[728px] h-[728px] rounded-full bg-white absolute left-1/2 top-2/4 -ml-[364px] "></div>
       <Image
         src={imgToRender}

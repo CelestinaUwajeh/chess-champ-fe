@@ -40,7 +40,7 @@ const Navigator = () => {
       </div>
 
       <div className="hidden lg:flex items-center gap-5">
-        <Link href={"/login"} className="text-main no-underline font-medium">
+        <Link href={"/signin"} className="text-main no-underline font-medium">
           Login
         </Link>
         <AppButton

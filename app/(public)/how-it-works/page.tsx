@@ -14,7 +14,7 @@ const Works = () => {
           link: { href: "/sign-up", text: "Sign Up" },
         }}
       />
-      <section className="bg-lightGrey py-[101px] px-[120px]">
+      <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "For",
@@ -27,7 +27,7 @@ const Works = () => {
           <WorksCard data={parentsWorks} />
         </div>
       </section>
-      <section className="bg-lightGrey py-[101px] px-[120px]">
+      <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "For",
@@ -40,7 +40,7 @@ const Works = () => {
           <WorksCard data={tutorsWorks} />
         </div>
       </section>
-      <section className="bg-lightGrey py-[101px] px-[120px]">
+      <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "For",

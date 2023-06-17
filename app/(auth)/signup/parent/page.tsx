@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { FcGoogle } from "react-icons/fc";
 
 import ParentForm from "./parent-form";
 import BackButton from "./back-button";
 import { Separator } from "@/components/ui/separator";
+import SignInWithGoogle from "@/components/with-google";
 
 const Parent = () => {
   return (
@@ -16,13 +16,7 @@ const Parent = () => {
         </Link>{" "}
         <span className="font-normal text-base">you need an account</span>
       </h4>
-      <div className="flex items-center border-solid border h-12 rounded-md">
-        <FcGoogle className="mx-7" />
-        <Separator orientation="vertical" className="my-2" />
-        <div className="flex-1 flex justify-center items-center cursor-pointer">
-          <span className="font-medium">Continue with Google</span>
-        </div>
-      </div>
+      <SignInWithGoogle />
       <div className="w-full my-10 flex items-center">
         <Separator className="flex-1" />
         <span className="mx-2">Or Sign up with Email</span>
