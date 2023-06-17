@@ -9,7 +9,7 @@ export default function AuthLayout({
   return (
     <main className="min-h-screen bg-bgPink">
       <Navigator />
-      {children}
+      <div className="mx-3 lg:mx-0">{children}</div>
       <LayoutImg />
     </main>
   );

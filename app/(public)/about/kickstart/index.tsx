@@ -5,9 +5,9 @@ import cartoon from "/public/kickstart-cartoon.png";
 
 const Kickstart = () => {
   return (
-    <div className="h-full flex font-mont">
-      <div className="flex-1 max-w-xl flex flex-col justify-center gap-12">
-        <h2 className="font-bold text-5xl leading-[143%]">
+    <div className="h-full flex flex-col lg:flex-row font-mont">
+      <div className="flex-1 max-w-xl flex flex-col items-center lg:items-start justify-center mb-10 lg:mb-0 gap-4 lg:gap-12">
+        <h2 className="font-bold text-2xl lg:text-5xl leading-[143%] text-center lg:text-start">
           Ready to kickstart a learning adventure?
         </h2>
         <AppButton
@@ -21,7 +21,11 @@ const Kickstart = () => {
         </AppButton>
       </div>
       <div className="flex-1 flex items-end justify-center">
-        <Image src={cartoon} alt="Kickstart" className="w-[360px] h-auto" />
+        <Image
+          src={cartoon}
+          alt="Kickstart"
+          className="w-[220px] lg:w-[360px] h-auto"
+        />
       </div>
     </div>
   );

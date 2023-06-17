@@ -5,8 +5,8 @@ import { Separator } from "@/components/ui/separator";
 
 const SignIn = () => {
   return (
-    <section className="bg-white mx-auto max-w-[827px] px-14 py-20 mt-10 font-mont rounded-xl">
-      <h1 className="text-black font-semibold text-4xl mb-4">
+    <section className="bg-white mx-auto max-w-[827px] px-3 lg:px-14 py-10 lg:py-20 mt-10 font-mont rounded-xl">
+      <h1 className="text-black font-semibold text-2xl lg:text-4xl mb-4">
         Welcome back!!!
       </h1>
       <p className="mb-10">Log in to your existing account</p>

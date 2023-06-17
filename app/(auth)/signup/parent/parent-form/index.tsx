@@ -121,9 +121,9 @@ const ParentForm = () => {
         />
       </div>
       <div className="mt-6">
-        <div className="flex items-center space-x-2">
-          <Checkbox id="terms" />
-          <Label htmlFor="terms">
+        <div className="flex space-x-2">
+          <Checkbox id="terms" className="mt-[2px]" />
+          <Label htmlFor="terms" className="font-normal leading-normal">
             By signing up to Chess Champs, you agree to our{" "}
             <Link href="terms" className="text-main">
               Terms of use

@@ -1,5 +1,5 @@
 import React from "react";
-import NavLinks, { navLinks } from "./links";
+import { navLinks } from "./links";
 import Link from "next/link";
 import AppButton from "@/components/button";
 import { LazyMotion, domAnimation, m } from "framer-motion";
@@ -10,7 +10,7 @@ interface PropType {
   setShowMenu: (value: boolean) => void;
 }
 
-const MobileNav = ({ showMenu }: PropType) => {
+const MobileNav = ({ showMenu, setShowMenu }: PropType) => {
   const pathname = usePathname();
   return (
     <LazyMotion features={domAnimation}>
@@ -34,6 +34,7 @@ const MobileNav = ({ showMenu }: PropType) => {
                 className={`${
                   isActive ? "text-main" : "text-black"
                 } no-underline font-medium hover:text-main transition-all`}
+                onClick={() => setShowMenu(false)}
               >
                 {link.name}
               </Link>
@@ -41,8 +42,9 @@ const MobileNav = ({ showMenu }: PropType) => {
           })}
         </div>
         <Link
-          href={"/login"}
+          href={"/signin"}
           className="text-main no-underline font-medium inline-block mt-8 mb-4"
+          onClick={() => setShowMenu(false)}
         >
           Login
         </Link>
@@ -52,6 +54,7 @@ const MobileNav = ({ showMenu }: PropType) => {
           size="medium"
           variant="primary"
           width="w-[97px]"
+          onClick={() => setShowMenu(false)}
         >
           Sign Up
         </AppButton>

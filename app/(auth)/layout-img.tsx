@@ -37,14 +37,16 @@ const LayoutImg = () => {
     <div
       className={`${
         shouldNotDisplay ? "hidden" : "block"
-      } h-96 relative overflow-y-hidden`}
+      } h-96 relative overflow-hidden`}
     >
       <div className=" w-[728px] h-[728px] rounded-full bg-white absolute left-1/2 top-2/4 -ml-[364px] "></div>
       <Image
         src={imgToRender}
         alt="img"
-        className={`w-[310px] absolute left-1/2 -ml-[155px] ${
-          pathname.endsWith("signup") ? "top-[50px]" : ""
+        className={`w-[220px] lg:w-[310px] absolute left-1/2 -ml-[110px] lg:-ml-[155px] ${
+          pathname.endsWith("signup")
+            ? "top-[100px] lg:top-[50px]"
+            : " top-[110px]"
         }`}
       />
     </div>

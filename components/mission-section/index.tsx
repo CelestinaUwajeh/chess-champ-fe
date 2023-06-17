@@ -24,10 +24,10 @@ const MissionSection = ({
     <div className="flex flex-col lg:flex-row gap-8 justify-center">
       <Image src={image} alt="image" className="flex-1" />
       <div className="flex-1">
-        <h3 className="font-mont font-semibold text-2xl mb-6 text-black">
+        <h3 className="font-mont font-semibold text-lg lg:text-2xl mb-6 text-black">
           {header}
         </h3>
-        <div className="flex flex-col gap-4 font-mont">
+        <div className="flex flex-col gap-4 font-mont text-sm lg:text-base">
           {text.map((item, index) => {
             return (
               <p className="font-light text-black" key={index}>

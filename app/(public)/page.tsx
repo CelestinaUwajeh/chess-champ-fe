@@ -27,7 +27,7 @@ export default function Home() {
           link: { href: "/sign-up", text: "Sign Up" },
         }}
       />
-      <section className=" bg-lightGrey px-3 py-3 lg:py-[101px] lg:px-[120px]">
+      <section className=" bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "Our",
@@ -52,7 +52,7 @@ export default function Home() {
           }}
         />
       </section>
-      <section className="border px-3 py-3 lg:py-[101px] lg:px-[120px]">
+      <section className="border px-3 py-10 lg:py-[101px] lg:px-[120px]">
         <PageSectionHeader
           data={{
             leftText: "Why",
@@ -68,7 +68,7 @@ export default function Home() {
           }}
         />
       </section>
-      <section className="border px-3 py-3 lg:py-[101px] lg:px-[120px] bg-bgPink">
+      <section className="border px-3 py-10 lg:py-[101px] lg:px-[120px] bg-bgPink">
         <PageSectionHeader
           data={{
             leftText: "Pricing",
@@ -80,7 +80,7 @@ export default function Home() {
         />
         <Pricing data={pricing} />
       </section>
-      <section className="overflow-hidden border px-3 py-3 lg:py-[101px] lg:px-[120px] font-mont">
+      <section className="overflow-hidden border px-3 py-10 lg:py-[101px] lg:px-[120px] font-mont">
         <PageSectionHeader
           data={{
             leftText: "Testimonials",

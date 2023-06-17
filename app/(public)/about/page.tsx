@@ -10,15 +10,15 @@ const About = () => {
     <main>
       <Hero
         data={{
-          image: "bg-about-bg",
+          image: "lg:bg-about-bg",
           header: "Get to Know Us Better",
           description:
             "At Chess Champs, we teach children how to play chess from the comfort of their homes. Chess Champs was founded in 2021 with the goal of building a generation of strategic thinkers through playing chess. Our virtual learning approach has made Chess Champs notable for learning and leisure. We work with experienced chess tutors to deliver an exciting learning journey to children in Nigeria and Africa.",
           link: { href: "/sign-up", text: "Sign Up" },
         }}
       />
-      <section className="bg-lightGrey py-[101px] px-[120px]">
-        <h3 className="text-3xl font-mont font-bold text-center mb-14">
+      <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
+        <h3 className="text-lg lg:text-3xl font-mont font-bold text-center mb-14">
           Our <span className="text-main">Mission</span> is to help Children
           Develop their Minds, IQ & Cognitive Functions
         </h3>
@@ -37,13 +37,13 @@ const About = () => {
           }}
         />
       </section>
-      <section className="bg-lightGrey py-[101px] px-[120px]">
-        <h3 className="text-3xl font-mont font-bold text-center mb-12">
+      <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
+        <h3 className="text-lg lg:text-3xl font-mont font-bold text-center mb-12">
           Meet our Partners
         </h3>
         <Partners data={partners} />
       </section>
-      <section className="bg-white pt-16 px-[120px]">
+      <section className="bg-white lg:pt-16 px-3 py-10 lg:px-[120px]">
         <Kickstart />
       </section>
     </main>

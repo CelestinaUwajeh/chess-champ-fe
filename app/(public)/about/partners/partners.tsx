@@ -10,7 +10,7 @@ interface PartnersPropType {
 
 const Partners = ({ data }: PartnersPropType) => {
   return (
-    <div className="flex justify-center items-center gap-7">
+    <div className="flex flex-wrap justify-center items-center gap-7">
       {data.map((partner) => (
         <Link key={partner.link} href={partner.link}>
           <Image
