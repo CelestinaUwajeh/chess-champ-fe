@@ -98,7 +98,7 @@
 
 .hero::after {
   content: "";
-  @apply hidden lg:block absolute bg-white w-[55%] h-[100%] bottom-0 right-0 -rotate-[70deg] -translate-x-[72%] -translate-y-6;
+  @apply hidden lg:block absolute bg-white lg:w-[100%] lg:h-[250%] xl:w-[105%] xl:h-[250%] bottom-0 right-0 -rotate-[70deg] lg:-translate-x-[50%] xl:-translate-x-[32%] lg:translate-y-28 xl:-translate-y-6;
 }
 
 .slick-slider {

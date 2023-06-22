@@ -22,11 +22,11 @@ const Hero = ({ data }: PropType) => {
   } = data || {};
 
   return (
-    <section className="border">
+    <section className="">
       <div
-        className={`bg-white ${image} hero xl:bg-[length:55%_auto] bg-no-repeat bg-right h-[calc(100vh-56px)] lg:h-[calc(100vh-107px)] overflow-hidden`}
+        className={`bg-white ${image} hero lg:bg-[length:auto_100%] xl:bg-[length:55%_100%] bg-no-repeat bg-right h-[calc(100vh-56px)] lg:h-[calc(100vh-107px)] overflow-hidden`}
       >
-        <div className="h-full flex flex-col justify-center max-w-2xl px-3 xl:pr-0 xl:pl-[120px] gap-4 z-20 relative">
+        <div className="h-full flex flex-col justify-center lg:max-w-xl xl:max-w-2xl px-3 xl:pr-0 xl:pl-[120px] gap-4 z-20 relative">
           <h1 className="font-mont font-extrabold  text-4xl lg:text-5xl">
             {header}
           </h1>

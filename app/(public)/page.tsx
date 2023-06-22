@@ -10,10 +10,7 @@ import crown from "/public/crown.svg";
 import { testimonies } from "@/components/testimonial/demo-test";
 import Pricing from "./pricing-section";
 import { pricing } from "./pricing";
-
-const Testimonials = dynamic(() => import("@/components/testimonial"), {
-  ssr: false,
-});
+import Testimonials from "@/components/testimonial";
 
 export default function Home() {
   return (
