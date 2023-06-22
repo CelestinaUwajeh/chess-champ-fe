@@ -1,8 +1,8 @@
 import { AiOutlineCheck } from "react-icons/ai";
 
-import { PricingDto } from "@/app/pricing";
 import AppButton from "../button";
 import { formatCurrency } from "@/utils";
+import { PricingDto } from "@/app/(public)/pricing";
 
 interface PricingCardInterface {
   data: PricingDto;
