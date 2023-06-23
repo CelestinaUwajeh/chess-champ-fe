@@ -1,12 +1,13 @@
 "use client";
 
-import parentCartoon from "/public/parent-auth-cartoon.png";
-import tutorCartoon from "/public/tutor-auth-cartoon.png";
-import studentCartoon from "/public/student-cartoon.png";
-import generalCartoon from "/public/kickstart-cartoon.png";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useCallback } from "react";
+
+import parentCartoon from "/public/parent-auth-cartoon.png";
+import tutorCartoon from "/public/tutor-auth-cartoon.png";
+import studentCartoon from "/public/student-auth-cartoon.png";
+import generalCartoon from "/public/kickstart-cartoon.png";
 
 const LayoutImg = () => {
   const pathname = usePathname();

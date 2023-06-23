@@ -10,7 +10,7 @@ const BackButton = () => {
   return (
     <span
       onClick={router.back}
-      className="inline-flex items-center gap-6 font-semibold mb-7"
+      className="inline-flex items-center gap-6 font-semibold mb-7 cursor-pointer"
     >
       <AiOutlineLeft />
       <span>Back</span>
