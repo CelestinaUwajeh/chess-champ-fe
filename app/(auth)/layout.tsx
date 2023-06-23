@@ -1,4 +1,4 @@
-import Navigator from "../(public)/navigator";
+import Navigator from "./navigator";
 import LayoutImg from "./layout-img";
 
 export default function AuthLayout({
