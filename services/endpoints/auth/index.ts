@@ -6,7 +6,11 @@ import {
 } from "@/utils/types";
 import { AxiosError } from "axios";
 
-export const loginApi = async ({ params }: { params: any }) => {
+export const loginApi = async ({
+  params,
+}: {
+  params: { username: string; password: string };
+}) => {
   const resp = await ChessChamps.post("/login", params);
   return resp.data.data;
 };
@@ -16,7 +20,9 @@ type IParentStudentSignUpApi = {
   url: string;
 };
 
-export const catchError = (err: unknown) => {
+export const catchError = (
+  err: unknown
+): { data: any; status: "error"; error: string } => {
   let msg;
   if (err instanceof AxiosError) {
     const serverErrorMsg = err.response?.data?.message;
@@ -53,4 +59,24 @@ export const tutorSignUpApi = async ({ params }: ITutorSignUpApi) => {
     },
   });
   return resp.data.data;
+};
+
+export const sendPasswordInstruction = async ({
+  params,
+}: {
+  params: { email: string };
+}) => {
+  const resp = await ChessChamps.post("/auth/send-reset-password-instruction", {
+    params,
+  });
+  return resp.data;
+};
+
+export const resetPassword = async ({
+  params,
+}: {
+  params: { token: string; new_password: string };
+}) => {
+  const resp = await ChessChamps.post("/auth/reset-password", params);
+  return resp.data;
 };

@@ -4,11 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { AiFillHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 import { usePageOnScroll } from "@/hooks/usePageOnScroll";
 import logo from "/public/logo.png";
 import AppButton from "@/components/button";
-import { usePathname } from "next/navigation";
 import Mobile from "./mobile";
 
 const Navigator = () => {

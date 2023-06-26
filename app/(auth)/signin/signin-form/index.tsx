@@ -17,34 +17,41 @@ import { Input } from "@/components/ui/input";
 import AppButton from "@/components/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+import { catchError, loginApi } from "@/services/endpoints/auth";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { loginFormSchema } from "@/utils/form-schemas";
+import { showToast } from "@/utils";
 
-const passwordRegex =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/;
-
-const formSchema = z.object({
-  username: z.string().nonempty(),
-  password: z
-    .string()
-    .regex(
-      passwordRegex,
-      "Password must have a minimum of 8 characters with at least one of uppercase, lowercase, number and symbol characters"
-    ),
-});
-
-type FormSchema = z.infer<typeof formSchema>;
+type FormSchema = z.infer<typeof loginFormSchema>;
 
 const SigninForm = () => {
+  const route = useRouter();
   const form = useForm<FormSchema>({
-    resolver: zodResolver(formSchema),
+    resolver: zodResolver(loginFormSchema),
     defaultValues: {
       username: "",
       password: "",
     },
   });
-
+  const [logginIn, setLoggingIn] = useState(false);
+  const onSubmit = async (values: FormSchema) => {
+    setLoggingIn(true);
+    try {
+      await loginApi({
+        params: values,
+      });
+      route.push("/dashboard");
+    } catch (error) {
+      const { status, error: err } = catchError(error);
+      showToast({ message: String(err), type: status });
+    } finally {
+      setLoggingIn(false);
+    }
+  };
   return (
     <Form {...form}>
-      <div>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
         <FormField
           control={form.control}
           name="username"
@@ -71,26 +78,27 @@ const SigninForm = () => {
             </FormItem>
           )}
         />
-      </div>
-      <div className="flex items-center justify-between mt-6">
-        <div className="flex items-center space-x-2">
-          <Switch id="remember-me" />
-          <Label htmlFor="remember-me">Remember me</Label>
+        <div className="flex items-center justify-between mt-6">
+          <div className="flex items-center space-x-2">
+            <Switch id="remember-me" />
+            <Label htmlFor="remember-me">Remember me</Label>
+          </div>
+          <Link href="/forgot-password" className="text-main text-sm underline">
+            Forgot password?
+          </Link>
         </div>
-        <Link href="/forgot-password" className="text-main text-sm underline">
-          Forgot password?
-        </Link>
-      </div>
-      <div className="flex justify-center mt-10">
-        <AppButton
-          type="submit"
-          variant="primary"
-          size="medium"
-          width="w-[134px]"
-        >
-          Sign In
-        </AppButton>
-      </div>
+        <div className="flex justify-center mt-10">
+          <AppButton
+            type="submit"
+            variant="primary"
+            size="medium"
+            width="w-[134px]"
+            loading={logginIn}
+          >
+            Sign In
+          </AppButton>
+        </div>
+      </form>
     </Form>
   );
 };

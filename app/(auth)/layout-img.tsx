@@ -32,7 +32,8 @@ const LayoutImg = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname])();
 
-  const shouldNotDisplay = pathname.endsWith("signin");
+  const shouldNotDisplay =
+    pathname.endsWith("signin") || pathname.includes("password");
 
   return (
     <div

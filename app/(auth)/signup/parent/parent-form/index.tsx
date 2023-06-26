@@ -24,6 +24,7 @@ import { parentFormSchema } from "@/utils/form-schemas";
 import MobileInput from "@/components/phone-input";
 import Popover from "@/components/pop-over";
 import ModalContent from "./modal-content";
+import { showToast } from "@/utils";
 
 type FormSchema = z.infer<typeof parentFormSchema>;
 
@@ -39,7 +40,7 @@ const ParentForm = () => {
       password: "",
     },
   });
-  const [openPopover, setOpenPopover] = useState(true);
+  const [openPopover, setOpenPopover] = useState(false);
   const [apiRunning, setApiRunning] = useState(false);
   const onSubmit = async (values: FormSchema) => {
     setApiRunning(true);
@@ -49,7 +50,8 @@ const ParentForm = () => {
         url: "users/parents",
       });
     } catch (error) {
-      catchError(error);
+      const { status, error: err } = catchError(error);
+      showToast({ message: String(err), type: status });
     } finally {
       setApiRunning(false);
     }
