@@ -1,3 +1,7 @@
+export type Prettify<T> = {
+  [K in keyof T]: T[K];
+} & {};
+
 export interface ILoginDto {
   username: string;
   password: string;
@@ -43,5 +47,5 @@ export interface ITutorSignUpDto {
   email: string;
   phone_number: string;
   date_of_birth: string;
-  gender: Gender.MALE;
+  gender: Gender;
 }

@@ -16,9 +16,7 @@ import {
   FieldValues,
   Path,
 } from "react-hook-form/dist/types";
-import { FormSchema as TutorFormSchema } from ".";
 import { Dispatch, SetStateAction } from "react";
-import { StudentFormSchema } from "../../student/student-form";
 
 interface IDatePicker<T extends FieldValues, U extends Path<T>> {
   field: ControllerRenderProps<T, U>;
@@ -30,7 +28,7 @@ interface IDatePicker<T extends FieldValues, U extends Path<T>> {
 export function DatePickerForm({
   value,
   onSelect,
-}: IDatePicker<any, "dateofbirth">) {
+}: IDatePicker<any, "date_of_birth">) {
   return (
     <Popover>
       <PopoverTrigger asChild>
