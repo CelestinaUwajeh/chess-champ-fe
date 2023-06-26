@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -20,8 +21,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { catchError, parentStudentSignUpApi } from "@/services/endpoints/auth";
 import { PlatformRoles } from "@/utils/types";
 import { parentFormSchema } from "@/utils/form-schemas";
-import { useState } from "react";
 import MobileInput from "@/components/phone-input";
+import Popover from "@/components/pop-over";
+import ModalContent from "./modal-content";
 
 type FormSchema = z.infer<typeof parentFormSchema>;
 
@@ -37,6 +39,7 @@ const ParentForm = () => {
       password: "",
     },
   });
+  const [openPopover, setOpenPopover] = useState(true);
   const [apiRunning, setApiRunning] = useState(false);
   const onSubmit = async (values: FormSchema) => {
     setApiRunning(true);
@@ -45,7 +48,6 @@ const ParentForm = () => {
         params: { user_role: PlatformRoles.PARENT, ...values },
         url: "users/parents",
       });
-      console.log({ response });
     } catch (error) {
       catchError(error);
     } finally {
@@ -55,6 +57,13 @@ const ParentForm = () => {
 
   return (
     <Form {...form}>
+      <Popover
+        open={openPopover}
+        setOpen={setOpenPopover}
+        displayCloseIcon={false}
+      >
+        <ModalContent />
+      </Popover>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-6">
           <FormField
