@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import Link from "next/link";
 import React from "react";
+import { Loader2 } from "lucide-react";
 
 interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   children: JSX.Element | JSX.Element[] | string;
@@ -14,6 +15,7 @@ interface ButtonProps extends React.ComponentPropsWithoutRef<"button"> {
   variant: "primary" | "secondary";
   height?: string;
   width?: string;
+  loading?: boolean;
 }
 
 const MotionButton = ({
@@ -46,6 +48,8 @@ const AppButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "primary",
       height,
       width,
+      loading = false,
+      disabled,
       ...props
     }: ButtonProps,
     ref
@@ -110,8 +114,17 @@ const AppButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
             {children}
           </Link>
         ) : (
-          <button ref={ref} {...props} className={buttonClass}>
-            {children}
+          <button
+            disabled={loading || disabled}
+            ref={ref}
+            {...props}
+            className={buttonClass}
+          >
+            {loading ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              children
+            )}
           </button>
         )}
       </MotionButton>
