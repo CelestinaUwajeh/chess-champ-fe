@@ -1,15 +1,16 @@
 import Hero from "@/components/hero";
 import ListCard from "@/components/list-card";
-import React from "react";
 import { services } from "./services";
 import AppButton from "@/components/button";
+import chessSm from "/public/work_small.png";
 
 const Services = () => {
   return (
     <main>
       <Hero
         data={{
-          image: "bg-services-bg",
+          image: "lg:bg-services-bg",
+          smImageSrc: chessSm,
           header: "Our Services",
           description:
             "Chess Champs offers a number of services to meet your needs.",

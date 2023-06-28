@@ -1,9 +1,10 @@
-import { StaticImageData } from "next/image";
+import Image, { StaticImageData } from "next/image";
 import AppButton from "../button";
 
 interface PropType {
   data: {
     image: string;
+    smImageSrc: StaticImageData;
     header: string;
     description: string;
     link: {
@@ -18,13 +19,14 @@ const Hero = ({ data }: PropType) => {
     image,
     header,
     description,
+    smImageSrc,
     link: { href, text } = { href: "", text: "" },
   } = data || {};
 
   return (
     <section className="">
       <div
-        className={`bg-white ${image} hero lg:bg-[length:auto_100%] xl:bg-[length:55%_100%] bg-no-repeat bg-right h-[calc(100vh-56px)] lg:h-[calc(100vh-107px)] overflow-hidden`}
+        className={`bg-white ${image} hero lg:bg-[length:auto_100%] xl:bg-[length:55%_100%] bg-no-repeat bg-right pt-11 lg:pt-0 lg:h-[calc(100vh-107px)] overflow-hidden`}
       >
         <div className="h-full flex flex-col justify-center lg:max-w-xl xl:max-w-2xl px-3 xl:pr-0 xl:pl-[120px] gap-4 z-20 relative">
           <h1 className="font-mont font-extrabold  text-4xl lg:text-5xl">
@@ -42,6 +44,11 @@ const Hero = ({ data }: PropType) => {
           </AppButton>
         </div>
       </div>
+      <Image
+        src={smImageSrc}
+        alt="image"
+        className=" w-full h-auto lg:hidden"
+      />
     </section>
   );
 };

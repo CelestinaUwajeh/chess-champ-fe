@@ -1,6 +1,7 @@
 import Hero from "@/components/hero";
 import MissionSection from "@/components/mission-section";
 import missionImg from "/public/about-mission-img.png";
+import aboutSm from "/public/misson_sm.png";
 import Partners from "./partners/partners";
 import { partners } from "./partners/demo-partners";
 import Kickstart from "./kickstart";
@@ -11,6 +12,7 @@ const About = () => {
       <Hero
         data={{
           image: "lg:bg-about-bg",
+          smImageSrc: aboutSm,
           header: "Get to Know Us Better",
           description:
             "At Chess Champs, we teach children how to play chess from the comfort of their homes. Chess Champs was founded in 2021 with the goal of building a generation of strategic thinkers through playing chess. Our virtual learning approach has made Chess Champs notable for learning and leisure. We work with experienced chess tutors to deliver an exciting learning journey to children in Nigeria and Africa.",
