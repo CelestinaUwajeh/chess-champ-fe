@@ -45,10 +45,11 @@ const ParentForm = () => {
   const onSubmit = async (values: FormSchema) => {
     setApiRunning(true);
     try {
-      const response = await parentStudentSignUpApi({
+      await parentStudentSignUpApi({
         params: { user_role: PlatformRoles.PARENT, ...values },
         url: "users/parents",
       });
+      setOpenPopover(true);
     } catch (error) {
       const { status, error: err } = catchError(error);
       showToast({ message: String(err), type: status });
