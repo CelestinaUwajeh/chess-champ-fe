@@ -83,7 +83,10 @@ const TutorForm = () => {
     <Form {...form}>
       <Popover
         open={openPopover}
-        setOpen={setOpenPopover}
+        setOpen={() => {
+          form.reset();
+          setOpenPopover(false);
+        }}
         displayCloseIcon={false}
       >
         <ModalContent />

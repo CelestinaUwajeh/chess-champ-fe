@@ -10,6 +10,7 @@ interface IPropType {
   setOpen: (value: boolean) => void;
   children: React.ReactNode;
   displayCloseIcon?: boolean;
+  isOverlayActive?: boolean;
 }
 
 const Popover = ({
@@ -17,10 +18,13 @@ const Popover = ({
   setOpen,
   children,
   displayCloseIcon = true,
+  isOverlayActive = false,
 }: IPropType) => {
   return (
     <AlertDialog onOpenChange={setOpen} open={open}>
-      <AlertDialogContent>
+      <AlertDialogContent
+        onOverlayClick={isOverlayActive ? setOpen : undefined}
+      >
         {displayCloseIcon && (
           <AlertDialogCancel className="border-none outline-none absolute top-0 right-0 hover:bg-transparent">
             <X />

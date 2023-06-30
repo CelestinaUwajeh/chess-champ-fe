@@ -40,7 +40,7 @@ const ParentForm = () => {
       password: "",
     },
   });
-  const [openPopover, setOpenPopover] = useState(false);
+  const [openPopover, setOpenPopover] = useState(true);
   const [apiRunning, setApiRunning] = useState(false);
   const onSubmit = async (values: FormSchema) => {
     setApiRunning(true);
@@ -61,8 +61,12 @@ const ParentForm = () => {
   return (
     <Form {...form}>
       <Popover
+        isOverlayActive
         open={openPopover}
-        setOpen={setOpenPopover}
+        setOpen={() => {
+          form.reset();
+          setOpenPopover(false);
+        }}
         displayCloseIcon={false}
       >
         <ModalContent />
