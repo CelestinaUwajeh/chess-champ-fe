@@ -15,7 +15,7 @@ const About = () => {
           smImageSrc: aboutSm,
           header: "Get to Know Us Better",
           description:
-            "At Chess Champs, we teach children how to play chess from the comfort of their homes. Chess Champs was founded in 2021 with the goal of building a generation of strategic thinkers through playing chess. Our virtual learning approach has made Chess Champs notable for learning and leisure. We work with experienced chess tutors to deliver an exciting learning journey to children in Nigeria and Africa.",
+            "At Chess Champs, we teach children how to play chess from the comfort of their homes. Our virtual approach has made us notable for learning and leisure.",
           link: { href: "/sign-up", text: "Sign Up" },
         }}
       />

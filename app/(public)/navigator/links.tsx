@@ -21,12 +21,16 @@ export const navLinks = [
     link: "tutors",
   },
   {
-    name: "Contact Us",
-    link: "contact-us",
+    name: "Call For Sponsors",
+    link: "sponsor",
   },
   {
-    name: "Sponsor",
-    link: "sponsor",
+    name: "Chess Items",
+    link: "chess-items",
+  },
+  {
+    name: "Contact Us",
+    link: "contact-us",
   },
 ];
 const NavLinks = () => {
