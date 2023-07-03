@@ -36,6 +36,7 @@ export const pricing: PricingDto[] = [
     perks: [
       "Interactive Sessions",
       "Tutoring",
+      "Supervised Practice Sessions",
       "Chess Resources",
       "Automatic Entry to Annual Tournament",
       "10% discount on purchased chess items",

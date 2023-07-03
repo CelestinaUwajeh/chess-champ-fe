@@ -8,7 +8,7 @@ import { socials } from "./socials";
 
 const Footer = () => {
   return (
-    <footer className=" bg-footerGrey pt-20 pb-9 px-3 lg:px-[120px] font-mont">
+    <footer className=" bg-footerGrey pt-20 pb-9 px-3 lg:px-[60px] font-mont">
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 lg:gap-0 mb-3">
         <div className="flex-1 grid grid-cols-2 lg:flex items-center gap-6 lg:gap-12">
           {navLinks.map((link) => (

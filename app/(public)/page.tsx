@@ -23,10 +23,10 @@ export default function Home() {
           header: "Unlock Your Child’s Innate Abilities Through Chess ",
           description:
             "At Chess Champs we teach young individuals how to play chess from the comfort of their homes.",
-          link: { href: "/sign-up", text: "Sign Up" },
+          link: { href: "/signup", text: "Sign Up" },
         }}
       />
-      <section className=" bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[120px]">
+      <section className=" bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[60px]">
         <PageSectionHeader
           data={{
             leftText: "Our",
@@ -45,13 +45,13 @@ export default function Home() {
               "Chess is an excellent game that helps children develop their minds, increasetheir IQ, and improve their cognitive function. By playing chess regularly, children can enhance their memory, concentration, critical thinking, and  problem-solving skills. It can also promote creativity, boost self-esteem, and help them develop a love for learning.",
             ],
             hasButton: {
-              url: "/sign-up",
+              url: "/signup",
               text: "Sign Up",
             },
           }}
         />
       </section>
-      <section className="border px-3 py-10 lg:py-[101px] lg:px-[120px]">
+      <section className="border px-3 py-10 lg:py-[101px] lg:px-[60px]">
         <PageSectionHeader
           data={{
             leftText: "Why",
@@ -67,7 +67,7 @@ export default function Home() {
           }}
         />
       </section>
-      <section className="border px-3 py-10 lg:py-[101px] lg:px-[120px] bg-bgPink">
+      <section className="border px-3 py-10 lg:py-[101px] lg:px-[60px] bg-bgPink">
         <PageSectionHeader
           data={{
             leftText: "Pricing",
@@ -79,7 +79,7 @@ export default function Home() {
         />
         <Pricing data={pricing} />
       </section>
-      <section className="overflow-hidden border px-3 py-10 lg:py-[101px] lg:px-[120px] font-mont">
+      <section className="overflow-hidden border px-3 py-10 lg:py-[101px] lg:px-[60px] font-mont">
         <PageSectionHeader
           data={{
             leftText: "Testimonials",

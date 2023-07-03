@@ -10,13 +10,13 @@ export interface TestimonyTypes {
 
 export const testimonies: TestimonyTypes[] = [
   {
-    name: "Ngozi Obioma",
+    name: "Tobi Oluwaseun",
     testimony:
       "Since i have started my child on chess lessons with chess champs, I have noticed a remarkable improvement in my child's level of reasoning. I see the delibrate act of thinking before speaking",
     image: ngozi,
   },
   {
-    name: "Amaka Uwajeh",
+    name: "Thelma Brown",
     testimony:
       "My daughter's level of concentration has greatly improved since enrolling her into the chess champs programme",
     image: amaka,

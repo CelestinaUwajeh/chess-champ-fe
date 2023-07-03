@@ -17,7 +17,7 @@ const Navigator = () => {
 
   return (
     <nav
-      className={`flex justify-between items-center px-3 lg:px-[112px] h-14 rounded bg-white lg:h-[107px] sticky right-0 left-0 top-0 z-30 ${
+      className={`flex justify-between items-center px-3 lg:px-[60px] h-14 rounded bg-white lg:h-20 sticky right-0 left-0 top-0 z-30 ${
         scrolling ? "shadow-lg" : "shadow"
       }`}
     >

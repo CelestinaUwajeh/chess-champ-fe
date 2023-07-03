@@ -14,10 +14,10 @@ const Services = () => {
           header: "Our Services",
           description:
             "Chess Champs offers a number of services to meet your needs.",
-          link: { href: "/sign-up", text: "Sign Up" },
+          link: { href: "/signup", text: "Sign Up" },
         }}
       />
-      <section className="bg-lightGrey py-[101px] px-[120px]">
+      <section className="bg-lightGrey py-[101px] px-[60px]">
         <h3 className="text-3xl font-mont font-bold text-center mb-14">
           Our <span className="text-main">Services</span> includes
         </h3>

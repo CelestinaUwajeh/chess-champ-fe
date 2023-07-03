@@ -17,7 +17,7 @@ const ListCard = ({
   return (
     <div
       className={`grid grid-cols-1 lg:grid-cols-2 ${
-        hasSideLines ? "" : "gap-20"
+        hasSideLines ? "" : "gap-24"
       }`}
     >
       {items.map(({ listType, header, text }, index) => (

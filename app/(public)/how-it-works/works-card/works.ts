@@ -9,7 +9,7 @@ export const parentsWorks: WorksCardPropType["data"] = {
     "Help your kids develop critical thinking and problem solving skills through playing chess.",
   todos: [
     "Sign Up for a parent account",
-    "Choose your child's plan and make payment",
+    "Create child's account",
     "Ensure your child attends class at the scheduled time.",
     "Monitor your child's progress",
     "Do well to leave us a review",
@@ -20,7 +20,7 @@ export const studentsWorks: WorksCardPropType["data"] = {
   header: "Unlock your innate abilities through chess",
   todos: [
     "Sign Up for a free account using parent email.",
-    "Have access to free chess game",
+    "Have access to play chess",
     "Have access to live sessions when enrolled in a class",
     "Attend classes at the scheduled time.",
   ],

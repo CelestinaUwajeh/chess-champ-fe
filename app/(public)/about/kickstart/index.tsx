@@ -12,7 +12,7 @@ const Kickstart = () => {
         </h2>
         <AppButton
           isLink
-          to="/sign-up"
+          to="/signup"
           variant="primary"
           size="medium"
           width="w-[134px] text-sm"

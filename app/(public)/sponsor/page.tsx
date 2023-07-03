@@ -3,7 +3,7 @@ import SponsorForm from "./sponsor-form";
 const Sponsor = () => {
   return (
     <main>
-      <section className="pt-5 pb-[101px] lg:px-[120px] flex flex-col lg:flex-row font-mont">
+      <section className="pt-5 pb-[101px] lg:px-[60px] flex flex-col lg:flex-row font-mont">
         <div className="flex-1 px-3 lg:px-0 pt-10 lg:pt-[101px] leading-[20px]">
           <h2 className="font-semibold mb-4 text-2xl lg:text-4xl">
             Become a <span className="text-main">Sponsor</span> today

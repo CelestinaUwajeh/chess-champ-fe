@@ -23,6 +23,6 @@ export const whyItWorks: ListCarPropType["data"]["items"] = [
   {
     listType: medal,
     header: "Tournament",
-    text: "Students have the opportunity to showcase their knowledgeat the chess champs tournament.",
+    text: "Students have the opportunity to showcase their knowledge at the chess champs tournament.",
   },
 ];

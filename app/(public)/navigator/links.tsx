@@ -47,7 +47,7 @@ const NavLinks = () => {
             key={link.name}
             className={`${
               isActive ? "text-main" : "text-black"
-            } no-underline font-medium hover:text-main transition-all`}
+            } no-underline font-medium text-[15px] hover:text-main transition-all`}
           >
             {link.name}
           </Link>
