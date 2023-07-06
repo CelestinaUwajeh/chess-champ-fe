@@ -39,7 +39,6 @@ const MissionSection = ({
         <>
           {founder && (
             <p className="mt-6">
-              Founder:{" "}
               <span className="font-bold font-mont">{founder.name}</span>{" "}
               <span className="font-light">{founder.title}</span>
             </p>

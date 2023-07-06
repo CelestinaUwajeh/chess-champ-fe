@@ -41,7 +41,7 @@ const About = () => {
       </section>
       <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[60px]">
         <h3 className="text-lg lg:text-3xl font-mont font-bold text-center mb-12">
-          Meet our Partners
+          Meet our Sponsors
         </h3>
         <Partners data={partners} />
       </section>
