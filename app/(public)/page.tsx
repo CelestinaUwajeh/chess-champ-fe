@@ -22,7 +22,7 @@ export default function Home() {
           smImageSrc: boyImg,
           header: "Unlock Your Child’s Innate Abilities Through Chess ",
           description:
-            "At Chess Champs we teach young individuals how to play chess from the comfort of their homes.",
+            "At Chess Champs we teach children how to play chess from the comfort of their homes.",
           link: { href: "/signup", text: "Sign Up" },
         }}
       />
@@ -42,7 +42,7 @@ export default function Home() {
             header:
               "Help Children Develop their Minds, IQ & Cognitive Functions",
             text: [
-              "Chess is an excellent game that helps children develop their minds, increasetheir IQ, and improve their cognitive function. By playing chess regularly, children can enhance their memory, concentration, critical thinking, and  problem-solving skills. It can also promote creativity, boost self-esteem, and help them develop a love for learning.",
+              "Chess is an excellent game that helps children develop their minds, increase their IQ, and improve their cognitive function. By playing chess regularly, children can enhance their memory, concentration, critical thinking, and  problem-solving skills. It can also promote creativity, boost self-esteem, and help them develop a love for learning.",
             ],
             hasButton: {
               url: "/signup",
@@ -73,10 +73,13 @@ export default function Home() {
             leftText: "Pricing",
             sideToColor: "left",
             strokeWidth: "w-[187px]",
-            extraStyles: "mb-14",
+            extraStyles: "mb-2 lg:mb-4",
             icon: crown,
           }}
         />
+        <p className="text-center mb-5 lg:mb-10">
+          Great value for an affordable pricing
+        </p>
         <Pricing data={pricing} />
       </section>
       <section className="overflow-hidden border px-3 py-10 lg:py-[101px] lg:px-[60px] font-mont">
@@ -91,9 +94,7 @@ export default function Home() {
         <p className="text-center font-semibold text-black text-2xl mb-4">
           We don&apos;t just talk, <span className="text-main">we Act</span>
         </p>
-        <p className="text-center">
-          Here&apos;s why parents and teachers love chess champs
-        </p>
+        <p className="text-center">Here&apos;s why parents love Chess Champs</p>
         <Testimonials data={testimonies} />
       </section>
     </main>

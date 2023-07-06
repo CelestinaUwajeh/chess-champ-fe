@@ -17,7 +17,7 @@ const ListCard = ({
   return (
     <div
       className={`grid grid-cols-1 lg:grid-cols-2 ${
-        hasSideLines ? "" : "gap-24"
+        hasSideLines ? "" : "lg:gap-8"
       }`}
     >
       {items.map(({ listType, header, text }, index) => (
@@ -27,7 +27,7 @@ const ListCard = ({
           )}
           <div className={`flex-1 py-${hasSideLines ? "8" : "4"}`}>
             {typeof listType === "string" ? (
-              <h2 className="text-main font-medium text-[36px] mb-1">
+              <h2 className="text-main font-medium text-2xl lg:text-[36px] mb-1">
                 {listType}
               </h2>
             ) : (
@@ -41,12 +41,22 @@ const ListCard = ({
             )}
             <h3
               className={`mb-4 ${
-                hasSideLines ? "text-4xl font-medium" : "text-2xl font-semibold"
+                hasSideLines
+                  ? "text-2xl lg:text-4xl font-medium"
+                  : "text-2xl font-semibold"
               }`}
             >
               {header}
             </h3>
-            <p>{text}</p>
+            <p
+              className={`${
+                hasSideLines
+                  ? `${index === items.length - 1 ? "" : "mb-4"}`
+                  : ""
+              }`}
+            >
+              {text}
+            </p>
           </div>
         </div>
       ))}

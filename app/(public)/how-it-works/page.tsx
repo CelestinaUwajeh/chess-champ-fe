@@ -13,7 +13,6 @@ const Works = () => {
           smImageSrc: chessSm,
           header: "How it Works",
           description: "Welcome to Chess Champs! Here is how it works.",
-          link: { href: "/signup", text: "Sign Up" },
         }}
       />
       <section className="bg-lightGrey px-3 py-10 lg:py-[101px] lg:px-[60px]">

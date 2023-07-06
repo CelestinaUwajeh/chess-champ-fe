@@ -7,7 +7,7 @@ interface PropType {
 
 const Pricing = ({ data }: PropType) => {
   return (
-    <div className="inline-grid grid-cols-3 gap-[71px] auto-rows-[1fr]">
+    <div className="inline-grid grid-cols-3 gap-10 lg:gap-[71px] auto-rows-[1fr]">
       {data.map((pricing) => (
         <div
           className="col-span-3 md:col-span-2 xl:col-span-1"

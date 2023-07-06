@@ -11,7 +11,7 @@ const Tutors = () => {
           header: "Are you an Experienced Chess Player? ",
           description:
             "We are looking to build a network of chess tutors who have the ability to teach children how to play chess.",
-          link: { href: "/signup", text: "Sign Up" },
+          link: { href: "/signup/tutor", text: "Join Us" },
         }}
       />
     </main>

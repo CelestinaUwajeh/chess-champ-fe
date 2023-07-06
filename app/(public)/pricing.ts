@@ -12,7 +12,12 @@ export const pricing: PricingDto[] = [
     description:
       "Perfect for young individuals with little or no knowledge on how to play chess.",
     price: "15000",
-    perks: ["Interactive Sessions", "Tutoring", "Chess Resources"],
+    perks: [
+      "Interactive Sessions",
+      "Tutoring",
+      "Supervised Practice Sessions",
+      "Chess Resources",
+    ],
     link: "/beginner",
   },
   {
@@ -23,6 +28,7 @@ export const pricing: PricingDto[] = [
     perks: [
       "Interactive Sessions",
       "Tutoring",
+      "Supervised Practice Sessions",
       "Chess Resources",
       "Automatic Entry to Annual Tournament",
     ],
@@ -31,7 +37,7 @@ export const pricing: PricingDto[] = [
   {
     name: "Advanced",
     description:
-      "Students would be taught how take complete control while playing chess with stragies like key openings, advanced tactics and endgame patterns.",
+      "Students would be taught how take complete control while playing chess with strategies like key openings, advanced tactics and endgame patterns.",
     price: "30000",
     perks: [
       "Interactive Sessions",

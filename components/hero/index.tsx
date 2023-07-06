@@ -7,7 +7,7 @@ interface PropType {
     smImageSrc: StaticImageData;
     header: string;
     description: string;
-    link: {
+    link?: {
       href: string;
       text: string;
     };
@@ -33,15 +33,17 @@ const Hero = ({ data }: PropType) => {
             {header}
           </h1>
           <p className="font-mont text-sm lg:text-base">{description}</p>
-          <AppButton
-            isLink
-            to={href}
-            size="medium"
-            width="w-[134px]"
-            variant="primary"
-          >
-            {text}
-          </AppButton>
+          {href ? (
+            <AppButton
+              isLink
+              to={href}
+              size="medium"
+              width="w-[134px]"
+              variant="primary"
+            >
+              {text}
+            </AppButton>
+          ) : null}
         </div>
       </div>
       <Image

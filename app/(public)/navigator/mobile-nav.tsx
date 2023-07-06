@@ -32,8 +32,10 @@ const MobileNav = ({ showMenu, setShowMenu }: PropType) => {
                 href={link.link}
                 key={link.name}
                 className={`${
-                  isActive ? "text-main" : "text-black"
-                } no-underline font-medium hover:text-main transition-all`}
+                  isActive
+                    ? "text-main border-main border-b-2 border-solid"
+                    : "text-black"
+                }  font-medium hover:text-main transition-all`}
                 onClick={() => setShowMenu(false)}
               >
                 {link.name}
