@@ -50,6 +50,7 @@ const AppButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       width,
       loading = false,
       disabled,
+      className,
       ...props
     }: ButtonProps,
     ref
@@ -97,9 +98,9 @@ const AppButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return `${sizeVariants[size][dim]}`;
     };
 
-    const buttonClass = `${variantStyles[variant].bg} ${
-      variantStyles[variant].text
-    } ${variantStyles[variant].borderWidth} ${
+    const buttonClass = `${
+      disabled ? "bg-main bg-opacity-50" : `${variantStyles[variant].bg}`
+    } ${variantStyles[variant].text} ${variantStyles[variant].borderWidth} ${
       variantStyles[variant].border
     } rounded-[40px] text-sm whitespace-nowrap font-mont font-medium px-6 flex items-center justify-center gap-3 radius no-underline border-solid ${dimension(
       "height"

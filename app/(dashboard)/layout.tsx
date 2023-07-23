@@ -7,10 +7,16 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <main className="relative min-h-screen bg-bgPink">
+    <main className="min-h-screen bg-bgPink">
       <Navigator />
-      <Sidebar />
-      <div className="mx-3 lg:mx-0">{children}</div>
+      <div className="mx-3 lg:mx-0 flex h-full relative">
+        <Sidebar />
+        <div className="flex-1 ml-[254px]">
+          <div className="max-w-[1200px] mx-auto w-full px-4 pt-[24px]">
+            {children}
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
