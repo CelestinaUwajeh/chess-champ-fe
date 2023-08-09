@@ -1,9 +1,9 @@
 import { AiOutlineClose } from "react-icons/ai";
 
 import Module from "@/app/(dashboard)/parent/child/[id]/progress/module";
-import { modules } from "@/app/(dashboard)/parent/child/[id]/progress/page";
 import { PricingDto } from "@/app/(public)/pricing";
 import PricingCard from ".";
+import { modules } from "@/utils/modules";
 
 interface PropType {
   data: PricingDto;
