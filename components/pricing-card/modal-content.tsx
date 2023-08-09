@@ -23,11 +23,11 @@ const ModalContent = ({ data, onModalClose }: PropType) => {
         <AiOutlineClose className="cursor-pointer" onClick={onModalClose} />
       </div>
 
-      <div className="flex gap-4">
-        <div className="flex-1 p-8 border rounded-[10px] overflow-y-auto">
+      <div className="flex flex-col xl:flex-row gap-2 xl:gap-4">
+        <div className="flex-1 p-2 xl:p-8 border rounded-[10px] overflow-y-auto">
           <Module modules={modules} isModal />
         </div>
-        <div className="w-[310px] border rounded-[10px]">
+        <div className="w-full xl:w-[310px] border rounded-[10px]">
           <PricingCard isModal data={data} />
         </div>
       </div>
