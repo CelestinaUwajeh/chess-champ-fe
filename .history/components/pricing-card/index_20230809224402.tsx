@@ -27,12 +27,7 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           }}
           displayCloseIcon={false}
         >
-          <ModalContent
-            data={data}
-            onModalClose={() => {
-              setPopOverOpen(false);
-            }}
-          />
+          <ModalContent data={data} />
         </Dialogue>
       )}
       <div

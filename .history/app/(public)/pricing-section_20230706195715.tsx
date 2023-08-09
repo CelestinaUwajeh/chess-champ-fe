@@ -13,7 +13,7 @@ const Pricing = ({ data }: PropType) => {
           className="col-span-3 md:col-span-2 xl:col-span-1"
           key={pricing.name}
         >
-          <PricingCard isModal={false} data={pricing} />
+          <PricingCard data={pricing} />
         </div>
       ))}
     </div>

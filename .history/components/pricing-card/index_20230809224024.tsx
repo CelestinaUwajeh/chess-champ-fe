@@ -27,18 +27,13 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           }}
           displayCloseIcon={false}
         >
-          <ModalContent
-            data={data}
-            onModalClose={() => {
-              setPopOverOpen(false);
-            }}
-          />
+          <ModalContent data={data} />
         </Dialogue>
       )}
       <div
-        className={`${
-          isModal ? "" : "group hover:bg-main hover:text-white"
-        }  flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
+        className={`group ${
+          isModal ? "" : "hover:bg-main"
+        } hover:text-white flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
       >
         <p className="font-semibold text-3xl mb-2 lg:mb-6 text-center uppercase">
           {name}

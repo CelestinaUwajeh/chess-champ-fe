@@ -15,7 +15,7 @@ interface PricingCardInterface {
 }
 
 const PricingCard = ({ data, isModal }: PricingCardInterface) => {
-  const { name, description, price, perks, link } = data || {};
+  const { name, description, price, perks } = data || {};
   const [popOverOpen, setPopOverOpen] = useState(false);
   return (
     <>
@@ -27,18 +27,13 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           }}
           displayCloseIcon={false}
         >
-          <ModalContent
-            data={data}
-            onModalClose={() => {
-              setPopOverOpen(false);
-            }}
-          />
+          <ModalContent data={data} />
         </Dialogue>
       )}
       <div
-        className={`${
-          isModal ? "" : "group hover:bg-main hover:text-white"
-        }  flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
+        className={`group ${
+          isModal ? "" : "hover:bg-main"
+        } hover:text-white flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
       >
         <p className="font-semibold text-3xl mb-2 lg:mb-6 text-center uppercase">
           {name}
@@ -71,21 +66,12 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           ))}
         </div>
         <div className="flex items-end flex-1 justify-center mt-8">
-          {isModal ? (
-            <a
-              href={link}
-              className="w-[134px]  rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center radius bg-main h-10 text-white"
-            >
-              Get Access
-            </a>
-          ) : (
-            <button
-              onClick={() => setPopOverOpen(true)}
-              className="w-[134px]  rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center radius bg-main h-10 text-white group-hover:bg-white group-hover:text-main"
-            >
-              See More
-            </button>
-          )}
+          <button
+            onClick={() => setPopOverOpen(true)}
+            className="w-[134px]  rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center radius bg-main h-10 text-white group-hover:bg-white group-hover:text-main"
+          >
+            See More
+          </button>
         </div>
       </div>
     </>

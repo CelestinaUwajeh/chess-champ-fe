@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import Module from "./module";
 
-export const modules = [
+const modules = [
   {
     number: 1,
     title: "Introduction to the game of chess",

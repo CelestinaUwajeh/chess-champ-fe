@@ -27,18 +27,13 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           }}
           displayCloseIcon={false}
         >
-          <ModalContent
-            data={data}
-            onModalClose={() => {
-              setPopOverOpen(false);
-            }}
-          />
+          <ModalContent data={data} />
         </Dialogue>
       )}
       <div
-        className={`${
-          isModal ? "" : "group hover:bg-main hover:text-white"
-        }  flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
+        className={`group ${
+          isModal ? "" : "hover:bg-main"
+        } hover:text-white flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
       >
         <p className="font-semibold text-3xl mb-2 lg:mb-6 text-center uppercase">
           {name}
@@ -74,7 +69,7 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
           {isModal ? (
             <a
               href={link}
-              className="w-[134px]  rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center radius bg-main h-10 text-white"
+              className="w-[134px]  rounded-[40px] text-sm whitespace-nowrap font-medium px-6 flex items-center justify-center radius bg-main h-10 text-white group-hover:bg-white group-hover:text-main"
             >
               Get Access
             </a>
