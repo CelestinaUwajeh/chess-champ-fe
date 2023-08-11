@@ -37,3 +37,14 @@ export const createNewPasswordFormSchema = z
     cpassword: z.string().regex(passwordRegex, passwordMsg),
   })
   .refine((data) => data.password === data.cpassword, "Passwords must match");
+
+export const parentBasicFormSchema = z.object({
+  full_name: z.string().trim(),
+  phone_number: z.string(),
+  email: z.string().email("This is not a valid email.").nonempty(),
+});
+export const parentPasswordFormSchema = z.object({
+  current_password: z.string().regex(passwordRegex, passwordMsg),
+  new_password: z.string().regex(passwordRegex, passwordMsg),
+  confirm_new_password: z.string().regex(passwordRegex, passwordMsg),
+});
