@@ -42,7 +42,7 @@ export default function Home() {
             header:
               "Help Children Develop their Minds, IQ & Cognitive Functions",
             text: [
-              "Chess is an excellent game that helps children develop their minds, increase their IQ, and improve their cognitive function. By playing chess regularly, children can enhance their memory, concentration, critical thinking, and  problem-solving skills. It can also promote creativity, boost self-esteem, and help them develop a love for learning.",
+              "Chess is an educative game that helps children develop their minds, increase their IQ and improve their cognitive functions. By playing chess regularly, children can enhance their memory, concentration, critical thinking and problem-solving skills. It can also promote creativity, boost self-esteem and help them develop a love for learning.",
             ],
             hasButton: {
               url: "/signup",

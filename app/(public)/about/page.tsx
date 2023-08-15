@@ -27,8 +27,7 @@ const About = () => {
         <MissionSection
           data={{
             image: missionImg,
-            header:
-              "Help Children Develop their Minds, IQ & Cognitive Functions",
+            header: "Chess Champs harnesses the power of game-based learning",
             text: [
               "Growing up, I always loved to play chess.  Chess was a go-to game for me when I needed to stimulate my brain. It improved my thinking capacity as a child which reflected in the choices I made in life.",
               "Since my childhood, I have had a passion of teaching this educative game with its numerous benefits to children in Nigeria and Africa at large.",
