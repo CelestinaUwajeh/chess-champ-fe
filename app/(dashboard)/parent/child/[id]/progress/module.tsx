@@ -10,7 +10,7 @@ import {
 
 interface PropType {
   modules: {
-    number: number;
+    header: string;
     title: string;
     items: string[];
     completed: boolean;
@@ -26,11 +26,11 @@ const Module = ({ modules, isModal }: PropType) => {
       } rounded-[10px] flex flex-col gap-6`}
     >
       {modules.map((module) => {
-        const { number, title, items, completed } = module;
+        const { header, title, items, completed } = module;
         return (
-          <div key={number} className="p-6 border rounded-[10px]">
+          <div key={header} className="p-6 border rounded-[10px]">
             <div className="flex justify-between items-center">
-              <p className="font-medium">Module {number}</p>
+              <p className="font-medium">{header}</p>
               {!isModal && completed && (
                 <div className="flex items-center gap-2">
                   <Image src={check} alt="check" className="text-main" />

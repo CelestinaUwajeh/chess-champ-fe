@@ -1,6 +1,6 @@
-export const modules = [
+export const question = [
   {
-    header: "Module 1",
+    header: "Getting started",
     title: "Introduction to the game of chess",
     items: [
       "Name & identity chess pieces",
@@ -10,7 +10,7 @@ export const modules = [
     completed: true,
   },
   {
-    header: "Module 2",
+    header: "Setting up your account",
     title: "Learn the rules of the game",
     items: [
       "Name & identity chess pieces",
