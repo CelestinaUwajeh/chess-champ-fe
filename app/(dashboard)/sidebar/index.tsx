@@ -2,31 +2,75 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useMemo } from "react";
+import { AiOutlineCalendar } from "react-icons/ai";
 import { BiSolidGridAlt, BiLogOut } from "react-icons/bi";
+import { FaRegUser } from "react-icons/fa";
 import { IoSettingsOutline, IoHelp } from "react-icons/io5";
+import { VscFileSubmodule } from "react-icons/vsc";
+import { IoMdTime } from "react-icons/io";
+import { MdOutlinePayment } from "react-icons/md";
 
-const menu = [
-  {
-    name: "dashboard",
-    link: "dashboard",
-    icon: <BiSolidGridAlt />,
-  },
-  {
-    name: "settings",
-    link: "settings",
-    icon: <IoSettingsOutline />,
-  },
-  {
-    name: "help center",
-    link: "help",
-    icon: <IoHelp />,
-  },
-];
+const menu = {
+  parent: [
+    {
+      name: "dashboard",
+      link: "dashboard",
+      icon: <BiSolidGridAlt />,
+    },
+    {
+      name: "settings",
+      link: "settings",
+      icon: <IoSettingsOutline />,
+    },
+    {
+      name: "help center",
+      link: "help",
+      icon: <IoHelp />,
+    },
+  ],
+  tutor: [
+    {
+      name: "dashboard",
+      link: "dashboard",
+      icon: <BiSolidGridAlt />,
+    },
+    {
+      name: "Students",
+      link: "students",
+      icon: <FaRegUser />,
+    },
+    {
+      name: "Modules",
+      link: "modules",
+      icon: <VscFileSubmodule />,
+    },
+    {
+      name: "Calendar",
+      link: "calendar",
+      icon: <AiOutlineCalendar />,
+    },
+    {
+      name: "Availabilty",
+      link: "availability",
+      icon: <IoMdTime />,
+    },
+    {
+      name: "Payments",
+      link: "payments",
+      icon: <MdOutlinePayment />,
+    },
+  ],
+};
 
 const Sidebar = () => {
   const pathname = usePathname();
-
+  const sidelinks = useMemo(() => {
+    if (pathname.includes("parent")) {
+      return menu.parent;
+    }
+    return menu.tutor;
+  }, [pathname]);
   return (
     <div className="fixed left-0 top-[107px] bottom-0 bg-white h-[calc(100vh-107px)] w-[254px] pl-12 py-12 flex flex-col">
       <div>
@@ -35,11 +79,13 @@ const Sidebar = () => {
       </div>
       <div className="h-[1px] w-full bg-[#CAC3B3] mt-4 mb-10"></div>
       <nav className="flex-1 flex flex-col gap-4">
-        {menu.map((item) => {
+        {sidelinks.map((item) => {
           const pathActive = pathname.endsWith(item.link);
           return (
             <Link
-              href={`parent/${item.link}`}
+              href={`${pathname.includes("parent") ? "parent" : "tutor"}/${
+                item.link
+              }`}
               key={item.name}
               className={`flex items-center gap-3 capitalize pl-4 py-2 rounded-l-[10px] ${
                 pathActive

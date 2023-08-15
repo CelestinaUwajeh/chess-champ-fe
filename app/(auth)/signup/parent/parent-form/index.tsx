@@ -40,7 +40,7 @@ const ParentForm = () => {
       password: "",
     },
   });
-  const [openPopover, setOpenPopover] = useState(true);
+  const [openPopover, setOpenPopover] = useState(false);
   const [apiRunning, setApiRunning] = useState(false);
   const onSubmit = async (values: FormSchema) => {
     setApiRunning(true);
