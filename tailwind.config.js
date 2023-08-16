@@ -22,6 +22,7 @@ module.exports = {
         "services-bg": `url("/services_hero_bg.png")`,
         "works-bg": `url("/works_hero_bg.png")`,
         "tutors-bg": `url("/tutors_hero_bg.png")`,
+        "sponsor-bg": `url("/sponsor_hero_bg.png")`,
       },
       fontFamily: {
         mont: ["Montserrat", "sans-serif"],
