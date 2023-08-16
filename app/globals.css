@@ -118,3 +118,16 @@
     @apply !bottom-[-62px];
   }
 }
+
+/* scrollbar styles */
+::-webkit-scrollbar {
+  @apply w-2 h-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-[#5b677734];
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-main bg-opacity-10 rounded-[100px];
+}

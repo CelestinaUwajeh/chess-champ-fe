@@ -37,7 +37,7 @@ const PricingCard = ({ data, isModal }: PricingCardInterface) => {
       )}
       <div
         className={`${
-          isModal ? "" : "group hover:bg-main hover:text-white"
+          isModal ? "overflow-y-auto" : "group hover:bg-main hover:text-white"
         }  flex flex-col bg-white h-full font-mont px-8 py-10 text-black rounded-xl transition-all`}
       >
         <p className="font-semibold text-3xl mb-2 lg:mb-6 text-center uppercase">
