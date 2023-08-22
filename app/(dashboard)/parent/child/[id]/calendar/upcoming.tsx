@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import tempImg from "/public/class-temp-img.png";
+import AppButton from "@/components/button";
 
 const classes = [
   {
@@ -27,9 +28,17 @@ interface CardType {
   name: string;
   module: number;
   time: string;
+  isTutor?: boolean;
+  onClassStart?: () => void;
 }
 
-const UpcomingCard = ({ name, module, time }: CardType) => {
+const UpcomingCard = ({
+  name,
+  module,
+  time,
+  isTutor,
+  onClassStart,
+}: CardType) => {
   return (
     <div className=" flex items-center justify-between border-b bg-main rounded-[10px] pl-2">
       <div className="flex-1 flex items-center bg-white">
@@ -41,23 +50,52 @@ const UpcomingCard = ({ name, module, time }: CardType) => {
         <div className="flex flex-col items-start text-black text-opacity-70">
           <p className="font-medium">{name}</p>
           <p className="text-sm">Module {module}</p>
+          {isTutor && (
+            <div className="bg-white h-full flex items-center gap-1">
+              <div className="w-2 h-2 rounded-full bg-[#CAC3B3]"></div>
+              <p className="text-black text-opacity-70 text-sm">{time}</p>
+            </div>
+          )}
         </div>
       </div>
-      <div className="bg-white h-full flex items-center gap-1">
-        <div className="w-2 h-2 rounded-full bg-[#CAC3B3]"></div>
-        <p className="text-black text-opacity-70 text-sm">{time}</p>
-      </div>
+      {isTutor ? (
+        <div className="flex items-center h-full bg-white">
+          <AppButton
+            size="medium"
+            variant="primary"
+            width="w-[97px]"
+            onClick={onClassStart}
+          >
+            Start class
+          </AppButton>
+        </div>
+      ) : (
+        <div className="bg-white h-full flex items-center gap-1">
+          <div className="w-2 h-2 rounded-full bg-[#CAC3B3]"></div>
+          <p className="text-black text-opacity-70 text-sm">{time}</p>
+        </div>
+      )}
     </div>
   );
 };
 
-const Upcoming = () => {
+const Upcoming = ({
+  isTutor,
+  onClassStart,
+}: Pick<CardType, "isTutor" | "onClassStart">) => {
   return (
     <div className="grid grid-cols-1 gap-5">
       {classes.map((item) => {
         const { id, name, module, time } = item;
         return (
-          <UpcomingCard key={id} name={name} module={module} time={time} />
+          <UpcomingCard
+            key={id}
+            name={name}
+            module={module}
+            time={time}
+            isTutor={isTutor}
+            onClassStart={onClassStart}
+          />
         );
       })}
     </div>

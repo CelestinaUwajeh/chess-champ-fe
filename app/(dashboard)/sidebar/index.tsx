@@ -42,7 +42,7 @@ const menu = {
     },
     {
       name: "Modules",
-      link: "modules",
+      link: "lesson-modules",
       icon: <VscFileSubmodule />,
     },
     {

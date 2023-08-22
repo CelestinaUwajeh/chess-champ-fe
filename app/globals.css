@@ -131,3 +131,27 @@
 ::-webkit-scrollbar-thumb {
   @apply bg-main bg-opacity-10 rounded-[100px];
 }
+
+/* for the table */
+.rdt_TableRow {
+  border: none !important;
+  margin: 0.8rem 0;
+}
+
+.rdt_TableBody > * {
+  font-size: 1.6rem !important;
+}
+
+.rdt_TableCol_Sortable > * {
+  white-space: normal !important;
+}
+
+.rdt_TableHeadRow {
+  font-weight: 700;
+  font-size: 1.6rem;
+  border: none !important;
+}
+
+.rdt_TableBody {
+  min-height: 15rem;
+}

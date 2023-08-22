@@ -1,12 +1,13 @@
-import React from "react";
-import HighlightCard from "../../parent/child/[id]/progress/highlight";
 import { FaRegUser } from "react-icons/fa";
 import { LiaChalkboardTeacherSolid } from "react-icons/lia";
-import AppButton from "@/components/button";
+
+import HighlightCard from "../../parent/child/[id]/progress/highlight";
+import Template from "./classes";
+import { classes, progress } from "./demo-data";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="mb-10">
       <h1 className="mb-6 text-2xl font-bold">Dashboard</h1>
       <div className="grid grid-cols-3 gap-8">
         <div
@@ -28,18 +29,25 @@ const Dashboard = () => {
           </div>
         </HighlightCard>
       </div>
-      <div className=" h-52 mt-14 bg-white rounded-[10px] flex flex-col items-center justify-center gap-4">
-        <p className="text-xl font-medium">Ready to start tutoring</p>
-        <p>Set availabilty</p>
-        <AppButton
-          isLink
-          to="/tutor/availability"
-          variant="primary"
-          size="medium"
-          width="w-[134px]"
-        >
-          Set
-        </AppButton>
+      {/* <NoStudent /> */}
+      <div className="flex mt-10 gap-8">
+        <Template
+          title="Upcoming Classes"
+          viewLink=""
+          data={classes}
+          containerStyle="flex flex-col gap-2"
+          style={{
+            boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)",
+            borderRadius: "10px",
+          }}
+        />
+        <Template
+          title="Student Progress"
+          viewLink=""
+          data={progress}
+          style={{ borderBottom: "1px solid rgba(202, 195, 179, 0.50)" }}
+          containerStyle="rounded-[10px] overflow-hidden"
+        />
       </div>
     </div>
   );
