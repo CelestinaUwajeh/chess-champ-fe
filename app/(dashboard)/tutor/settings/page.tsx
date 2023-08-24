@@ -1,11 +1,9 @@
-import React from "react";
-
-import Basic from "./forms/basic";
-import PasswordForm from "./forms/password";
 import { Separator } from "@/components/ui/separator";
-import Role from "./role";
-import ChildAccount from "./child-account";
-import Delete from "./delete";
+import PasswordForm from "../../parent/settings/forms/password";
+import Basic from "./forms/basic";
+import Bank from "./forms/bank";
+import Role from "../../parent/settings/role";
+import Delete from "../../parent/settings/delete";
 
 const Settings = () => {
   return (
@@ -16,11 +14,11 @@ const Settings = () => {
         <Separator />
         <PasswordForm />
         <Separator />
-        <Role role="Parent" />
+        <Bank />
         <Separator />
-        <ChildAccount />
+        <Role role="Tutor" />
         <Separator />
-        <Delete title="Child account" />
+        <Delete title="Delete Account" />
         <Separator />
       </div>
     </div>

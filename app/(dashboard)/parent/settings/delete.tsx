@@ -1,9 +1,9 @@
 import AppButton from "@/components/button";
 
-const Delete = () => {
+const Delete = ({ title }: { title: string }) => {
   return (
     <div className="space-y-6">
-      <p className="mb-6 font-medium text-lg">Child account</p>
+      <p className="mb-6 font-medium text-lg">{title}</p>
       <p>
         You must delete all of your children&apos;s accounts before deleting
         your own account.

@@ -48,3 +48,18 @@ export const parentPasswordFormSchema = z.object({
   new_password: z.string().regex(passwordRegex, passwordMsg),
   confirm_new_password: z.string().regex(passwordRegex, passwordMsg),
 });
+
+export const tutorBasicFormSchema = z.object({
+  full_name: z.string().trim(),
+  user_name: z.string().trim(),
+  date_of_birth: z.string().nonempty(),
+  phone_number: z.string(),
+  email: z.string().email("This is not a valid email.").nonempty(),
+});
+
+export const accountFormSchema = z.object({
+  account_name: z.string().trim(),
+  account_no: z.string().trim(),
+  bank_name: z.string().trim(),
+  account_type: z.string().trim(),
+});

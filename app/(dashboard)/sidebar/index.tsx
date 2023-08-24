@@ -60,6 +60,11 @@ const menu = {
       link: "payments",
       icon: <MdOutlinePayment />,
     },
+    {
+      name: "settings",
+      link: "settings",
+      icon: <IoSettingsOutline />,
+    },
   ],
 };
 
@@ -99,7 +104,7 @@ const Sidebar = () => {
           );
         })}
       </nav>
-      <button className="flex items-center gap-3  text-black text-opacity-60">
+      <button className="absolute bottom-0 left-0 right-0 h-11 flex items-center pl-12 gap-3   text-black text-opacity-60">
         <BiLogOut />
         <span>Logout</span>
       </button>
