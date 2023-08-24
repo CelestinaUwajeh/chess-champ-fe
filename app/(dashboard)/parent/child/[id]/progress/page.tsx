@@ -1,14 +1,6 @@
-import Image from "next/image";
 import Attendance from "./attendance";
 import Percentage from "./percentage";
 import Points from "./points";
-import check from "/public/module-check.svg";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import Module from "./module";
 import { modules } from "@/utils/modules";
 

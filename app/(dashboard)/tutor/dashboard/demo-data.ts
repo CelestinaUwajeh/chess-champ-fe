@@ -47,3 +47,26 @@ export const progress = [
     descAtt: "Active",
   },
 ];
+export const community = [
+  {
+    name: "Jecoco",
+    img: tempimg,
+    day: "200 points",
+    module: "Beginner",
+    descAtt: "Active",
+  },
+  {
+    name: "Jemma",
+    img: tempimg,
+    day: "200 points",
+    module: "Beginner",
+    descAtt: "Active",
+  },
+  {
+    name: "Jerry",
+    img: tempimg,
+    day: "200 points",
+    module: "Beginner",
+    descAtt: "Active",
+  },
+];

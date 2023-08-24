@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useMemo } from "react";
 import { AiOutlineCalendar } from "react-icons/ai";
-import { BiSolidGridAlt, BiLogOut } from "react-icons/bi";
+import { BiSolidGridAlt, BiLogOut, BiSolidChess } from "react-icons/bi";
 import { FaRegUser } from "react-icons/fa";
 import { IoSettingsOutline, IoHelp } from "react-icons/io5";
 import { VscFileSubmodule } from "react-icons/vsc";
@@ -61,7 +61,34 @@ const menu = {
       icon: <MdOutlinePayment />,
     },
     {
-      name: "settings",
+      name: "Settings",
+      link: "settings",
+      icon: <IoSettingsOutline />,
+    },
+  ],
+  student: [
+    {
+      name: "dashboard",
+      link: "dashboard",
+      icon: <BiSolidGridAlt />,
+    },
+    {
+      name: "Play",
+      link: "play",
+      icon: <BiSolidChess />,
+    },
+    {
+      name: "Learn",
+      link: "learn",
+      icon: <VscFileSubmodule />,
+    },
+    {
+      name: "My Tutor",
+      link: "tutor",
+      icon: <AiOutlineCalendar />,
+    },
+    {
+      name: "Settings",
       link: "settings",
       icon: <IoSettingsOutline />,
     },
@@ -73,6 +100,9 @@ const Sidebar = () => {
   const sidelinks = useMemo(() => {
     if (pathname.includes("parent")) {
       return menu.parent;
+    }
+    if (pathname.includes("student")) {
+      return menu.student;
     }
     return menu.tutor;
   }, [pathname]);
@@ -88,9 +118,13 @@ const Sidebar = () => {
           const pathActive = pathname.endsWith(item.link);
           return (
             <Link
-              href={`${pathname.includes("parent") ? "parent" : "tutor"}/${
-                item.link
-              }`}
+              href={`${
+                pathname.includes("parent")
+                  ? "parent"
+                  : pathname.includes("student")
+                  ? "student"
+                  : "tutor"
+              }/${item.link}`}
               key={item.name}
               className={`flex items-center gap-3 capitalize pl-4 py-2 rounded-l-[10px] ${
                 pathActive
