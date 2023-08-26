@@ -1,7 +1,8 @@
 import AppButton from "@/components/button";
 import { Calendar } from "@/components/ui/calendar";
-import Upcoming from "./upcoming";
 import { ScrollArea } from "@/components/ui/scrollarea";
+import { classes } from "@/app/(dashboard)/student/learn/page";
+import UpcomingCard from "./upcoming";
 
 const Page = () => {
   return (
@@ -17,7 +18,20 @@ const Page = () => {
         <div className="flex-1">
           <p className="font-medium mt-4 mb-4">Upcoming classes</p>
           <ScrollArea className="h-[270px]">
-            <Upcoming />
+            <div className="grid grid-cols-1 gap-5">
+              {classes.map((item) => {
+                const { id, name, module, time } = item;
+                return (
+                  <UpcomingCard
+                    key={id}
+                    name={name}
+                    module={module}
+                    time={time}
+                    onClassStart={() => {}}
+                  />
+                );
+              })}
+            </div>
           </ScrollArea>
         </div>
       </div>

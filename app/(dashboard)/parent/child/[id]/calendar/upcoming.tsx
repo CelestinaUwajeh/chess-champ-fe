@@ -2,28 +2,6 @@ import Image from "next/image";
 
 import tempImg from "/public/class-temp-img.png";
 import AppButton from "@/components/button";
-
-const classes = [
-  {
-    id: 1,
-    name: "John Doe",
-    module: 3,
-    time: "9AM-10AM",
-  },
-  {
-    id: 2,
-    name: "Mariam Jae",
-    module: 3,
-    time: "9AM-10AM",
-  },
-  {
-    id: 3,
-    name: "Wale Cole",
-    module: 2,
-    time: "9AM-10AM",
-  },
-];
-
 interface CardType {
   name: string;
   module: number;
@@ -81,29 +59,4 @@ const UpcomingCard = ({
   );
 };
 
-const Upcoming = ({
-  isTutor,
-  isStudent,
-  onClassStart,
-}: Pick<CardType, "isTutor" | "isStudent" | "onClassStart">) => {
-  return (
-    <div className="grid grid-cols-1 gap-5">
-      {classes.map((item) => {
-        const { id, name, module, time } = item;
-        return (
-          <UpcomingCard
-            key={id}
-            name={name}
-            module={module}
-            time={time}
-            isTutor={isTutor}
-            isStudent={isStudent}
-            onClassStart={onClassStart}
-          />
-        );
-      })}
-    </div>
-  );
-};
-
-export default Upcoming;
+export default UpcomingCard;

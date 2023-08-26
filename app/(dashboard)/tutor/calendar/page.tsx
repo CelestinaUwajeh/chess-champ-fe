@@ -1,8 +1,9 @@
 import AppButton from "@/components/button";
 import { ScrollArea } from "@/components/ui/scrollarea";
-import Upcoming from "../../parent/child/[id]/calendar/upcoming";
 import { Calendar } from "@/components/ui/calendar";
 import Table from "./table";
+import UpcomingCard from "../../parent/child/[id]/calendar/upcoming";
+import { classes } from "../../student/learn/page";
 
 const TutorCalendar = () => {
   return (
@@ -18,7 +19,21 @@ const TutorCalendar = () => {
         <div className="flex-1">
           <p className="font-medium mt-4 mb-4">Upcoming classes</p>
           <ScrollArea className="h-[270px] pr-4">
-            <Upcoming isTutor />
+            <div className="grid grid-cols-1 gap-5">
+              {classes.map((item) => {
+                const { id, name, module, time } = item;
+                return (
+                  <UpcomingCard
+                    key={id}
+                    name={name}
+                    module={module}
+                    time={time}
+                    isTutor
+                    onClassStart={() => {}}
+                  />
+                );
+              })}
+            </div>
           </ScrollArea>
         </div>
       </div>

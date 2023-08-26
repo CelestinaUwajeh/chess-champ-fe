@@ -6,7 +6,28 @@ import AppButton from "@/components/button";
 import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scrollarea";
 import Table from "../../tutor/calendar/table";
-import Upcoming from "../../parent/child/[id]/calendar/upcoming";
+import Upcoming from "./upcoming";
+
+export const classes = [
+  {
+    id: 1,
+    name: "John Doe",
+    module: 3,
+    time: "9AM-10AM",
+  },
+  {
+    id: 2,
+    name: "Mariam Jae",
+    module: 3,
+    time: "9AM-10AM",
+  },
+  {
+    id: 3,
+    name: "Wale Cole",
+    module: 2,
+    time: "9AM-10AM",
+  },
+];
 
 const ModuleContent = () => {
   return (
@@ -59,7 +80,7 @@ const Learn = () => {
                     <div className="flex-1">
                       <p className="font-medium mt-4 mb-4">Upcoming classes</p>
                       <ScrollArea className="h-[270px] pr-4">
-                        <Upcoming isStudent />
+                        <Upcoming classes={classes} />
                       </ScrollArea>
                     </div>
                   </div>
