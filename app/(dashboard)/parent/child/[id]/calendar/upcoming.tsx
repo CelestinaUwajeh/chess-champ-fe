@@ -29,6 +29,7 @@ interface CardType {
   module: number;
   time: string;
   isTutor?: boolean;
+  isStudent?: boolean;
   onClassStart?: () => void;
 }
 
@@ -37,6 +38,7 @@ const UpcomingCard = ({
   module,
   time,
   isTutor,
+  isStudent,
   onClassStart,
 }: CardType) => {
   return (
@@ -50,7 +52,7 @@ const UpcomingCard = ({
         <div className="flex flex-col items-start text-black text-opacity-70">
           <p className="font-medium">{name}</p>
           <p className="text-sm">Module {module}</p>
-          {isTutor && (
+          {(isTutor || isStudent) && (
             <div className="bg-white h-full flex items-center gap-1">
               <div className="w-2 h-2 rounded-full bg-[#CAC3B3]"></div>
               <p className="text-black text-opacity-70 text-sm">{time}</p>
@@ -58,7 +60,7 @@ const UpcomingCard = ({
           )}
         </div>
       </div>
-      {isTutor ? (
+      {isTutor || isStudent ? (
         <div className="flex items-center h-full bg-white">
           <AppButton
             size="medium"
@@ -66,7 +68,7 @@ const UpcomingCard = ({
             width="w-[97px]"
             onClick={onClassStart}
           >
-            Start class
+            {isStudent ? "Join class" : "Start class"}
           </AppButton>
         </div>
       ) : (
@@ -81,8 +83,9 @@ const UpcomingCard = ({
 
 const Upcoming = ({
   isTutor,
+  isStudent,
   onClassStart,
-}: Pick<CardType, "isTutor" | "onClassStart">) => {
+}: Pick<CardType, "isTutor" | "isStudent" | "onClassStart">) => {
   return (
     <div className="grid grid-cols-1 gap-5">
       {classes.map((item) => {
@@ -94,6 +97,7 @@ const Upcoming = ({
             module={module}
             time={time}
             isTutor={isTutor}
+            isStudent={isStudent}
             onClassStart={onClassStart}
           />
         );
