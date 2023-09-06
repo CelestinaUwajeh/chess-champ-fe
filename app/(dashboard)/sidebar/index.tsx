@@ -97,20 +97,23 @@ const menu = {
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const parentPath = usePathname().split("/")[1];
+
   const sidelinks = useMemo(() => {
-    if (pathname.includes("parent")) {
+    if (parentPath === "parent") {
       return menu.parent;
     }
-    if (pathname.includes("student")) {
+    if (parentPath === "student") {
       return menu.student;
     }
     return menu.tutor;
-  }, [pathname]);
+  }, [parentPath]);
+  console.log({ pathname, parentPath });
   return (
     <div className="fixed left-0 top-[107px] bottom-0 bg-white h-[calc(100vh-107px)] w-[254px] pl-12 py-12 flex flex-col">
       <div>
         <span className="font-medium">John Doe</span>
-        <p className="text-xs">Parent</p>
+        <p className="text-xs uppercase">{parentPath}</p>
       </div>
       <div className="h-[1px] w-full bg-[#CAC3B3] mt-4 mb-10"></div>
       <nav className="flex-1 flex flex-col gap-4">
@@ -119,9 +122,9 @@ const Sidebar = () => {
           return (
             <Link
               href={`${
-                pathname.includes("parent")
+                parentPath === "parent"
                   ? "parent"
-                  : pathname.includes("student")
+                  : parentPath === "student"
                   ? "student"
                   : "tutor"
               }/${item.link}`}

@@ -4,11 +4,13 @@ import { useCallback, useMemo, useState } from "react";
 import { Chess } from "chess.js";
 import { Chessboard } from "react-chessboard";
 
-type MoveFunction = (g: Chess["move"]) => void;
+interface PropType {
+  onPlay?: () => void;
+}
 
-const ChessPlay = () => {
-  const chess = useMemo(() => new Chess(), []); // <- 1
-  const [fen, setFen] = useState(chess.fen()); // <- 2
+const ChessPlay = ({ onPlay }: PropType) => {
+  const chess = useMemo(() => new Chess(), []);
+  const [fen, setFen] = useState(chess.fen());
   const [over, setOver] = useState("");
 
   const makeAMove = useCallback(
@@ -47,7 +49,6 @@ const ChessPlay = () => {
       from: sourceSquare,
       to: targetSquare,
       color: chess.turn(),
-      // promotion: "q",
     };
 
     const move = makeAMove(moveData);
@@ -59,8 +60,17 @@ const ChessPlay = () => {
   }
 
   return (
-    <div>
-      <Chessboard position={fen} onPieceDrop={onDrop} />
+    <div style={{ boxShadow: "0px 4.47px 13.42px 0px rgba(0,0,0,0.25)" }}>
+      <Chessboard
+        position={fen}
+        onPieceDrop={onDrop}
+        customDarkSquareStyle={{ backgroundColor: "#930000" }}
+        customLightSquareStyle={{
+          backgroundColor: "#FFF4F4",
+        }}
+        // Flip board from white to black
+        boardOrientation="white"
+      />
     </div>
   );
 };
