@@ -3,7 +3,7 @@ import { ScrollArea } from "@/components/ui/scrollarea";
 import { Calendar } from "@/components/ui/calendar";
 import Table from "./table";
 import UpcomingCard from "../../parent/child/[id]/calendar/upcoming";
-import { classes } from "../../student/learn/page";
+import { theclasses } from "../../student/learn/page";
 
 const TutorCalendar = () => {
   return (
@@ -20,7 +20,7 @@ const TutorCalendar = () => {
           <p className="font-medium mt-4 mb-4">Upcoming classes</p>
           <ScrollArea className="h-[270px] pr-4">
             <div className="grid grid-cols-1 gap-5">
-              {classes.map((item) => {
+              {theclasses.map((item) => {
                 const { id, name, module, time } = item;
                 return (
                   <UpcomingCard

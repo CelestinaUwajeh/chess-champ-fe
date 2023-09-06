@@ -3,7 +3,7 @@ import { LiaChalkboardTeacherSolid } from "react-icons/lia";
 
 import HighlightCard from "../../parent/child/[id]/progress/highlight";
 import Template from "./classes";
-import { classes, progress } from "./demo-data";
+import { democlasses, progress } from "./demo-data";
 
 const Dashboard = () => {
   return (
@@ -34,7 +34,7 @@ const Dashboard = () => {
         <Template
           title="Upcoming Classes"
           viewLink=""
-          data={classes}
+          data={democlasses}
           containerStyle="flex flex-col gap-2"
           style={{
             boxShadow: "0px 4px 12px 0px rgba(0, 0, 0, 0.14)",

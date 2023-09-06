@@ -8,7 +8,7 @@ import { ScrollArea } from "@/components/ui/scrollarea";
 import Table from "../../tutor/calendar/table";
 import Upcoming from "./upcoming";
 
-export const classes = [
+export const theclasses = [
   {
     id: 1,
     name: "John Doe",
@@ -80,7 +80,7 @@ const Learn = () => {
                     <div className="flex-1">
                       <p className="font-medium mt-4 mb-4">Upcoming classes</p>
                       <ScrollArea className="h-[270px] pr-4">
-                        <Upcoming classes={classes} />
+                        <Upcoming classes={theclasses} />
                       </ScrollArea>
                     </div>
                   </div>

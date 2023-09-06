@@ -1,6 +1,6 @@
 import tempimg from "/public/class-temp-img.png";
 
-export const classes = [
+export const democlasses = [
   {
     name: "Jecoco",
     img: tempimg,
