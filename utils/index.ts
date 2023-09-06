@@ -29,3 +29,24 @@ export const showToast = ({
     type: type !== "loading" ? type : "default",
   });
 };
+
+export const theclasses = [
+  {
+    id: 1,
+    name: "John Doe",
+    module: 3,
+    time: "9AM-10AM",
+  },
+  {
+    id: 2,
+    name: "Mariam Jae",
+    module: 3,
+    time: "9AM-10AM",
+  },
+  {
+    id: 3,
+    name: "Wale Cole",
+    module: 2,
+    time: "9AM-10AM",
+  },
+];

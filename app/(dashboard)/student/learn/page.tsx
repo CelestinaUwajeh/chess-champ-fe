@@ -7,27 +7,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scrollarea";
 import Table from "../../tutor/calendar/table";
 import Upcoming from "./upcoming";
-
-export const theclasses = [
-  {
-    id: 1,
-    name: "John Doe",
-    module: 3,
-    time: "9AM-10AM",
-  },
-  {
-    id: 2,
-    name: "Mariam Jae",
-    module: 3,
-    time: "9AM-10AM",
-  },
-  {
-    id: 3,
-    name: "Wale Cole",
-    module: 2,
-    time: "9AM-10AM",
-  },
-];
+import { theclasses } from "@/utils";
 
 const ModuleContent = () => {
   return (

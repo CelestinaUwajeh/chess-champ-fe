@@ -1,8 +1,8 @@
 import AppButton from "@/components/button";
 import { Calendar } from "@/components/ui/calendar";
 import { ScrollArea } from "@/components/ui/scrollarea";
-import { theclasses } from "@/app/(dashboard)/student/learn/page";
 import UpcomingCard from "./upcoming";
+import { theclasses } from "@/utils";
 
 const Page = () => {
   return (

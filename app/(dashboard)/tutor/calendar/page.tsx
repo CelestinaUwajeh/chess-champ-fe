@@ -1,9 +1,11 @@
+"use client";
+
 import AppButton from "@/components/button";
 import { ScrollArea } from "@/components/ui/scrollarea";
 import { Calendar } from "@/components/ui/calendar";
 import Table from "./table";
 import UpcomingCard from "../../parent/child/[id]/calendar/upcoming";
-import { theclasses } from "../../student/learn/page";
+import { theclasses } from "@/utils";
 
 const TutorCalendar = () => {
   return (
