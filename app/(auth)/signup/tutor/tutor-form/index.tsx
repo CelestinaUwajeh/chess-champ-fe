@@ -129,8 +129,13 @@ const TutorForm = () => {
                   <DatePickerForm
                     field={field}
                     key="date_of_birth"
-                    value={dateofbirth}
-                    onSelect={setDateofbirth}
+                    value={new Date(field?.value)}
+                    onSelect={(date) => {
+                      form.setValue(
+                        "date_of_birth",
+                        new Date(date).toISOString()
+                      );
+                    }}
                   />
                 </FormItem>
               )}

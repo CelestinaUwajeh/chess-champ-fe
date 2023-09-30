@@ -53,7 +53,7 @@ export const tutorSignUpApi = async ({ params }: ITutorSignUpApi) => {
   formData.append("gender", params.gender);
   formData.append("cv", JSON.stringify(params.cv));
 
-  const resp = await ChessChamps.post("/signup", formData, {
+  const resp = await ChessChamps.post("/tutors", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },
