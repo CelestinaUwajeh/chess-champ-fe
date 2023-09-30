@@ -24,7 +24,6 @@ const children = [
 
 const Children = () => {
   const { data } = useFetchStudents();
-  console.log({ data });
   return (
     <div className="flex flex-col gap-4">
       {children.map((child) => {

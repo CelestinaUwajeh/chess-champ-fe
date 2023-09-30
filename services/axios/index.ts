@@ -11,7 +11,7 @@ const ChessChamps: AxiosInstance = axios.create({
 
 ChessChamps.interceptors.request.use(
   (config: AxiosRequestConfig): any => {
-    const accessToken = localStorage.getItem("access_token");
+    const accessToken = sessionStorage.getItem("access_token");
     if (accessToken) {
       if (config.headers) {
         config.headers["Authorization"] = `Bearer ${accessToken}`;

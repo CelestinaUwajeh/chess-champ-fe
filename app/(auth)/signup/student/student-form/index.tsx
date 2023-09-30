@@ -33,6 +33,8 @@ import MobileInput from "@/components/phone-input";
 import { studentFormSchema } from "@/utils/form-schemas";
 import Popover from "@/components/pop-over";
 import ModalContent from "./modal-content";
+import { useAppSelector } from "@/redux/hooks";
+import { selectUser } from "@/redux/slices/auth";
 
 export type StudentFormSchema = Prettify<
   Omit<z.infer<typeof studentFormSchema>, "gender"> & {
@@ -40,17 +42,29 @@ export type StudentFormSchema = Prettify<
   }
 >;
 
-const StudentForm = () => {
+const StudentForm = ({
+  isModal = false,
+  modalTitle,
+  onSucess,
+  onError,
+}: {
+  isModal?: boolean;
+  modalTitle?: string;
+  onSucess?: () => void;
+  onError?: () => void;
+}) => {
+  const user = useAppSelector(selectUser);
   const form = useForm<StudentFormSchema>({
     resolver: zodResolver(studentFormSchema),
     defaultValues: {
       first_name: "",
       last_name: "",
-      email: "",
+      email: isModal ? user?.email : "",
       password: "",
       gender: Gender.MALE,
       phone_number: "",
       user_name: "",
+      date_of_birth: "",
     },
   });
   const [openPopover, setOpenPopover] = useState(false);
@@ -60,11 +74,15 @@ const StudentForm = () => {
     try {
       await parentStudentSignUpApi({
         params: values,
-        url: "students",
+        url: isModal ? "parents/students" : "students",
       });
+      if (isModal) {
+        onSucess?.();
+        return;
+      }
       setOpenPopover(true);
     } catch (error) {
-      catchError(error);
+      isModal ? onError?.() : catchError(error);
     } finally {
       setApiRunning(false);
     }
@@ -81,7 +99,13 @@ const StudentForm = () => {
       >
         <ModalContent />
       </Popover>
-      <form onSubmit={form.handleSubmit(onSubmit)}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className={isModal ? "max-h-[calc(100vh-120px)] overflow-y-auto" : ""}
+      >
+        {isModal ? (
+          <h2 className="text-lg font-bold mb-6">{modalTitle}</h2>
+        ) : null}
         <div className="flex flex-col gap-6">
           <FormField
             control={form.control}
@@ -211,22 +235,24 @@ const StudentForm = () => {
             />
           </div>
         </div>
-        <div className="mt-6">
-          <div className="flex space-x-2">
-            <Checkbox id="terms" className="mt-[2px]" />
-            <Label htmlFor="terms" className="font-normal leading-normal">
-              By submitting your application, you agree to our{" "}
-              <Link href="terms" className="text-main">
-                Terms of use
-              </Link>{" "}
-              and{" "}
-              <Link href="policy" className="text-main">
-                Privacy Policy
-              </Link>
-              .
-            </Label>
+        {!isModal ? (
+          <div className="mt-6">
+            <div className="flex space-x-2">
+              <Checkbox id="terms" className="mt-[2px]" />
+              <Label htmlFor="terms" className="font-normal leading-normal">
+                By submitting your application, you agree to our{" "}
+                <Link href="terms" className="text-main">
+                  Terms of use
+                </Link>{" "}
+                and{" "}
+                <Link href="policy" className="text-main">
+                  Privacy Policy
+                </Link>
+                .
+              </Label>
+            </div>
           </div>
-        </div>
+        ) : null}
         <div className="flex justify-center mt-10">
           <AppButton
             type="submit"

@@ -1,7 +1,16 @@
+"use client";
+
+import { useState } from "react";
+import { mutate } from "swr";
+
 import AppButton from "@/components/button";
 import Children from "./children";
+import StudentForm from "@/app/(auth)/signup/student/student-form";
+import Popover from "@/components/pop-over";
+import { showToast } from "@/utils";
 
 const ChildrenAccount = () => {
+  const [popupOpen, setPopupOpen] = useState(false);
   return (
     <div className="mb-10">
       <div className="flex items-center justify-between mb-6">
@@ -12,10 +21,42 @@ const ChildrenAccount = () => {
             and enroll them to a class.
           </p>
         </div>
-        <AppButton variant="secondary" size="medium" width="w-[134px]">
+        <AppButton
+          type="button"
+          variant="secondary"
+          size="medium"
+          width="w-[134px]"
+          onClick={() => setPopupOpen(true)}
+        >
           Add a child
         </AppButton>
       </div>
+      <Popover
+        open={popupOpen}
+        setOpen={() => {
+          setPopupOpen(false);
+        }}
+        displayCloseIcon
+      >
+        <StudentForm
+          isModal
+          modalTitle="Add a child"
+          onSucess={() => {
+            mutate("parents/students");
+            setPopupOpen(false);
+            showToast({
+              message: "Child successfully added!",
+              type: "success",
+            });
+          }}
+          onError={() => {
+            showToast({
+              message: "Failded to add child account",
+              type: "error",
+            });
+          }}
+        />
+      </Popover>
       <Children />
     </div>
   );

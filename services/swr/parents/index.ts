@@ -5,7 +5,7 @@ import { getStudents } from "@/services/endpoints/parents";
 export const useFetchStudents = <T>() => {
   const fetcher = async () => {
     const response = await getStudents();
-    return response.data;
+    return response.items;
   };
   const { data, error, mutate, isLoading, isValidating } = useSWR(
     "parents/students",
