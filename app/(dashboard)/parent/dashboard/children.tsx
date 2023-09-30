@@ -2,6 +2,7 @@ import Image from "next/image";
 import childcartoon from "/public/child-cartoon.png";
 import Link from "next/link";
 import AppButton from "@/components/button";
+import { useFetchStudents } from "@/services/swr/parents";
 
 const children = [
   {
@@ -22,6 +23,8 @@ const children = [
 ];
 
 const Children = () => {
+  const { data } = useFetchStudents();
+  console.log({ data });
   return (
     <div className="flex flex-col gap-4">
       {children.map((child) => {

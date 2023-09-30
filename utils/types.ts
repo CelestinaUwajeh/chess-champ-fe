@@ -36,7 +36,7 @@ export interface IParentSignUpDto {
   last_name: string;
   email: string;
   phone_number: string;
-  user_role: PlatformRoles.PARENT;
+  user_name: string;
   password: string;
 }
 
@@ -48,4 +48,11 @@ export interface ITutorSignUpDto {
   phone_number: string;
   date_of_birth: string;
   gender: Gender;
+}
+
+export enum USER_ROLE {
+  STUDENT = "STUDENT",
+  ADMIN = "ADMIN",
+  TUTOR = "TUTOR",
+  PARENT = "PARENT",
 }

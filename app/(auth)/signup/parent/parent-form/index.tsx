@@ -46,8 +46,8 @@ const ParentForm = () => {
     setApiRunning(true);
     try {
       await parentStudentSignUpApi({
-        params: { user_role: PlatformRoles.PARENT, ...values },
-        url: "users/parents",
+        params: values,
+        url: "parents",
       });
       setOpenPopover(true);
     } catch (error) {

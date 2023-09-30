@@ -1,5 +1,5 @@
 "use client";
-import { format } from "date-fns";
+import { format, isValid } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -22,7 +22,7 @@ interface IDatePicker<T extends FieldValues, U extends Path<T>> {
   field: ControllerRenderProps<T, U>;
   key: U;
   value: Date | undefined;
-  onSelect: Dispatch<SetStateAction<Date | undefined>>;
+  onSelect: (date: Date) => void;
 }
 
 export function DatePickerForm({
@@ -40,7 +40,11 @@ export function DatePickerForm({
               !value && "text-muted-foreground"
             )}
           >
-            {value ? format(value, "PPP") : <span>Pick a date</span>}
+            {value && isValid(value) ? (
+              format(value!, "PPP")
+            ) : (
+              <span>Pick a date</span>
+            )}
             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
           </Button>
         </FormControl>
@@ -49,7 +53,7 @@ export function DatePickerForm({
         <Calendar
           mode="single"
           selected={value}
-          onSelect={onSelect}
+          onSelect={(e) => onSelect(e!)}
           disabled={(date) =>
             date > new Date() || date < new Date("1900-01-01")
           }

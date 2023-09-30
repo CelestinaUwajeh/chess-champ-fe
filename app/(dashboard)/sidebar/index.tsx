@@ -10,6 +10,8 @@ import { IoSettingsOutline, IoHelp } from "react-icons/io5";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlinePayment } from "react-icons/md";
+import { useAppSelector } from "@/redux/hooks";
+import { selectUser } from "@/redux/slices/auth";
 
 const menu = {
   parent: [
@@ -108,12 +110,15 @@ const Sidebar = () => {
     }
     return menu.tutor;
   }, [parentPath]);
-  console.log({ pathname, parentPath });
+  const user = useAppSelector(selectUser);
+  console.log({ user });
   return (
     <div className="fixed left-0 top-[107px] bottom-0 bg-white h-[calc(100vh-107px)] w-[254px] pl-12 py-12 flex flex-col">
       <div>
-        <span className="font-medium">John Doe</span>
-        <p className="text-xs uppercase">{parentPath}</p>
+        <span className="font-medium">
+          {user?.first_name} {user?.last_name}
+        </span>
+        <p className="text-xs uppercase">{user?.user_role}</p>
       </div>
       <div className="h-[1px] w-full bg-[#CAC3B3] mt-4 mb-10"></div>
       <nav className="flex-1 flex flex-col gap-4">

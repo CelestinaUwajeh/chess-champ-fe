@@ -6,13 +6,13 @@ import {
 } from "@/utils/types";
 import { AxiosError } from "axios";
 
-export const loginApi = async ({
+export const loginApi = async <T>({
   params,
 }: {
   params: { username: string; password: string };
 }) => {
-  const resp = await ChessChamps.post("/login", params);
-  return resp.data.data;
+  const resp = await ChessChamps.post<T>("/auth/login", params);
+  return resp.data;
 };
 
 type IParentStudentSignUpApi = {

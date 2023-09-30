@@ -6,12 +6,12 @@ import axios, {
 } from "axios";
 
 const ChessChamps: AxiosInstance = axios.create({
-  baseURL: "https://chesschamps.onrender.com/api/v1/",
+  baseURL: "https://chess-champ-be-development.up.railway.app/api/v1/",
 });
 
 ChessChamps.interceptors.request.use(
   (config: AxiosRequestConfig): any => {
-    const accessToken = localStorage.getItem("token");
+    const accessToken = localStorage.getItem("access_token");
     if (accessToken) {
       if (config.headers) {
         config.headers["Authorization"] = `Bearer ${accessToken}`;

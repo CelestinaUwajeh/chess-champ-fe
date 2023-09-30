@@ -41,7 +41,6 @@ export type StudentFormSchema = Prettify<
 >;
 
 const StudentForm = () => {
-  const [dateofbirth, setDateofbirth] = useState<Date>();
   const form = useForm<StudentFormSchema>({
     resolver: zodResolver(studentFormSchema),
     defaultValues: {
@@ -49,7 +48,6 @@ const StudentForm = () => {
       last_name: "",
       email: "",
       password: "",
-      date_of_birth: "",
       gender: Gender.MALE,
       phone_number: "",
       user_name: "",
@@ -61,8 +59,8 @@ const StudentForm = () => {
     setApiRunning(true);
     try {
       await parentStudentSignUpApi({
-        params: { user_role: PlatformRoles.STUDENT, ...values },
-        url: "users/students",
+        params: values,
+        url: "students",
       });
       setOpenPopover(true);
     } catch (error) {
@@ -173,8 +171,13 @@ const StudentForm = () => {
                   <DatePickerForm
                     field={field}
                     key="date_of_birth"
-                    value={dateofbirth}
-                    onSelect={setDateofbirth}
+                    value={new Date(field?.value)}
+                    onSelect={(date) => {
+                      form.setValue(
+                        "date_of_birth",
+                        new Date(date).toISOString()
+                      );
+                    }}
                   />
                 </FormItem>
               )}

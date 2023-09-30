@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import check from "/public/check.png";
-// import AppButton from "@/components/button";
 
 const ModalContent = () => {
   return (
@@ -12,14 +11,6 @@ const ModalContent = () => {
         registration, a verification email has been sent to your mail. Verify
         your account to get started.
       </p>
-      {/* <AppButton
-        type="submit"
-        variant="primary"
-        size="medium"
-        width="w-[134px]"
-      >
-        Verify
-      </AppButton> */}
     </div>
   );
 };

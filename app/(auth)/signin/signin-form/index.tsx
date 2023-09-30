@@ -22,11 +22,27 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { loginFormSchema } from "@/utils/form-schemas";
 import { showToast } from "@/utils";
+import { USER_ROLE } from "@/utils/types";
+import { useAppDispatch } from "@/redux/hooks";
+import { setUserLoginDetails } from "@/redux/slices/auth";
 
 type FormSchema = z.infer<typeof loginFormSchema>;
 
+export interface LoginResponseDto {
+  access_token: string;
+  email: string;
+  first_name: string;
+  id: string;
+  last_login: string;
+  last_name: string;
+  phone_number: string;
+  user_name: string;
+  user_role: USER_ROLE;
+}
+
 const SigninForm = () => {
-  const route = useRouter();
+  const dispatch = useAppDispatch();
+  const router = useRouter();
   const form = useForm<FormSchema>({
     resolver: zodResolver(loginFormSchema),
     defaultValues: {
@@ -38,10 +54,17 @@ const SigninForm = () => {
   const onSubmit = async (values: FormSchema) => {
     setLoggingIn(true);
     try {
-      await loginApi({
+      const response = await loginApi<LoginResponseDto>({
         params: values,
       });
-      route.push("/dashboard");
+      showToast({ message: String("Login succesful"), type: "success" });
+      sessionStorage.setItem("access_token", response.access_token);
+      dispatch(setUserLoginDetails(response));
+      router.push(
+        `${
+          response?.user_role ? response.user_role.toLowerCase() : "parent"
+        }/dashboard`
+      );
     } catch (error) {
       const { status, error: err } = catchError(error);
       showToast({ message: String(err), type: status });
@@ -72,7 +95,11 @@ const SigninForm = () => {
             <FormItem className="flex-1">
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input placeholder="Enter Password" {...field} />
+                <Input
+                  placeholder="Enter Password"
+                  {...field}
+                  type="password"
+                />
               </FormControl>
               <FormMessage />
             </FormItem>

@@ -1,6 +1,7 @@
 import "./globals.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import ReactProvider from "@/redux/provider";
 
 export const metadata = {
   title: "Chess Champs",
@@ -14,7 +15,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ReactProvider>{children}</ReactProvider>
+      </body>
     </html>
   );
 }
