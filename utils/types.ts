@@ -56,3 +56,30 @@ export enum USER_ROLE {
   TUTOR = "TUTOR",
   PARENT = "PARENT",
 }
+
+export type TutorType = {
+  date_of_birth: string;
+  gender: Gender;
+  total_students: number;
+  total_classes: number;
+  level_of_experience: "Beginner" | "Intermediate" | "Advanced";
+};
+
+export type StudentType = {
+  id: string;
+  gender: string;
+  base_user: {
+    first_name: string;
+    last_name: string;
+    profile_picture_url: string;
+    created_at: string;
+    email: string;
+    id: string;
+    phone_number: string;
+    user_name: string;
+    user_role: string;
+    last_login: string;
+    last_active: string;
+    tutor: TutorType;
+  };
+};

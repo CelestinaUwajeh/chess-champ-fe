@@ -50,8 +50,6 @@ export type TutorFormSchema = Prettify<
 >;
 
 const TutorForm = () => {
-  const [dateofbirth, setDateofbirth] = useState<Date>();
-
   const form = useForm<TutorFormSchema>({
     resolver: zodResolver(tutorFormSchema),
     defaultValues: {

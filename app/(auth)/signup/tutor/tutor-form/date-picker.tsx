@@ -29,6 +29,15 @@ export function DatePickerForm({
   value,
   onSelect,
 }: IDatePicker<any, "date_of_birth">) {
+  const fromYear = () => {
+    const currentDate = new Date();
+    const eightYearsAgo = new Date(
+      currentDate.getFullYear() - 100,
+      currentDate.getMonth(),
+      currentDate.getDate()
+    );
+    return eightYearsAgo.getFullYear();
+  };
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -51,6 +60,9 @@ export function DatePickerForm({
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <Calendar
+          toYear={new Date().getFullYear()}
+          fromYear={fromYear()}
+          captionLayout="dropdown-buttons"
           mode="single"
           selected={value}
           onSelect={(e) => onSelect(e!)}
