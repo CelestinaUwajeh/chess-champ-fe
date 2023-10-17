@@ -17,6 +17,7 @@ export const showToast = ({
   message: string;
   type: "error" | "success" | "warning" | "info" | "default" | "loading";
 }) => {
+  console.log("this runs");
   toast(message, {
     position: "top-right",
     autoClose: 5000,
@@ -28,6 +29,24 @@ export const showToast = ({
     theme: "colored",
     type: type !== "loading" ? type : "default",
   });
+};
+
+export const convertToFormData = (data: { [key: string]: any }) => {
+  const formData = new FormData();
+  Object.keys(data).forEach((key) => {
+    if (!data[key]) {
+      if (data[key] === "") {
+        data[key] = " ";
+        formData.append(key, data[key]);
+      } else {
+        delete data[key];
+      }
+    } else {
+      formData.append(key, data[key].trim());
+    }
+  });
+
+  return formData;
 };
 
 export const theclasses = [

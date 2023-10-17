@@ -50,7 +50,8 @@ export const createNewPasswordFormSchema = z
   .refine((data) => data.password === data.cpassword, "Passwords must match");
 
 export const parentBasicFormSchema = z.object({
-  full_name: z.string().trim(),
+  first_name: z.string().trim(),
+  last_name: z.string().trim(),
   phone_number: z.string(),
   email: z.string().email("This is not a valid email.").nonempty(),
 });

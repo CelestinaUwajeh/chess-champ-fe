@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-
 import Hero from "@/components/hero";
 import MissionSection from "@/components/mission-section";
 import PageSectionHeader from "@/components/page-section_header";

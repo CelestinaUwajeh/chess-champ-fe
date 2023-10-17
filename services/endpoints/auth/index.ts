@@ -80,3 +80,12 @@ export const resetPassword = async ({
   const resp = await ChessChamps.post("/auth/reset-password", params);
   return resp.data;
 };
+
+export const changePassword = async ({
+  params,
+}: {
+  params: { old_password: string; new_password: string };
+}) => {
+  const resp = await ChessChamps.post("/auth/change-password", params);
+  return resp.data;
+};

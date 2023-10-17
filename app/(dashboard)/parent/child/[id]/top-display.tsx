@@ -39,12 +39,7 @@ const nav = [
 const TopDisplay = () => {
   const params = useParams();
   const pathname = usePathname();
-  const {
-    data: {
-      id,
-      base_user: { first_name, last_name, profile_picture_url },
-    },
-  } = useFetchStudent<StudentType>(params?.id);
+  const { data } = useFetchStudent<StudentType>(params?.id);
   return (
     <div
       className="bg-white rounded-[10px] px-10 py-6 my-6"
@@ -52,10 +47,13 @@ const TopDisplay = () => {
     >
       <div className="flex items-center bg-white rounded-[10px]">
         <div className="flex-1 flex items-center gap-4">
-          <Image src={profile_picture_url || childcartoon} alt={first_name} />
+          <Image
+            src={data?.base_user?.profile_picture_url || childcartoon}
+            alt={data?.base_user?.first_name}
+          />
           <div className="pt-1">
             <p className="text-xl font-medium leading-[12px]">
-              {first_name} {last_name}
+              {data?.base_user?.first_name} {data?.base_user?.last_name}
             </p>
           </div>
         </div>

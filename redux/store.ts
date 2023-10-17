@@ -15,13 +15,13 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storage from "redux-persist/lib/storage";
 
 import AuthSlice from "./slices/auth";
+import { createPersistStorage } from "./storage";
 
 const persistConfig = {
   key: "root",
-  storage,
+  storage: createPersistStorage(),
   blackList: ["appointments"],
 };
 

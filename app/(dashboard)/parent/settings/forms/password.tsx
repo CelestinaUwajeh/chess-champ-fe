@@ -15,6 +15,9 @@ import {
 import { Input } from "@/components/ui/input";
 import AppButton from "@/components/button";
 import { parentPasswordFormSchema } from "@/utils/form-schemas";
+import { useState } from "react";
+import { catchError, changePassword } from "@/services/endpoints/auth";
+import { showToast } from "@/utils";
 
 type FormSchema = z.infer<typeof parentPasswordFormSchema>;
 
@@ -27,8 +30,23 @@ const PasswordForm = () => {
       confirm_new_password: "",
     },
   });
+  const [loading, setLoading] = useState(false);
   const onSubmit = async (values: FormSchema) => {
-    console.log({ values });
+    setLoading(true);
+    try {
+      await changePassword({
+        params: {
+          old_password: values.current_password,
+          new_password: values.new_password,
+        },
+      });
+      showToast({ message: "Password successfully changed", type: "success" });
+    } catch (error) {
+      const { status, error: err } = catchError(error);
+      showToast({ message: String(err), type: status });
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div>
@@ -92,7 +110,8 @@ const PasswordForm = () => {
               variant="primary"
               size="medium"
               width="w-[134px]"
-              disabled
+              disabled={loading}
+              loading={loading}
             >
               Change password
             </AppButton>

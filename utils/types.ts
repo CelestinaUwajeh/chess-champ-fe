@@ -68,6 +68,7 @@ export type TutorType = {
 export type StudentType = {
   id: string;
   gender: string;
+  created_at: string;
   base_user: {
     first_name: string;
     last_name: string;

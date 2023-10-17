@@ -4,6 +4,8 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -18,8 +20,6 @@ import AppButton from "@/components/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { catchError, loginApi } from "@/services/endpoints/auth";
-import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { loginFormSchema } from "@/utils/form-schemas";
 import { showToast } from "@/utils";
 import { USER_ROLE } from "@/utils/types";
@@ -57,7 +57,7 @@ const SigninForm = () => {
       const response = await loginApi<LoginResponseDto>({
         params: values,
       });
-      showToast({ message: String("Login succesful"), type: "success" });
+      showToast({ message: "Login succesful", type: "success" });
       sessionStorage.setItem("access_token", response.access_token);
       dispatch(setUserLoginDetails(response));
       router.push(

@@ -9,7 +9,8 @@ export const useFetchStudents = <T>() => {
   };
   const { data, error, mutate, isLoading, isValidating } = useSWR(
     "parents/students",
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   );
 
   return {
@@ -28,7 +29,8 @@ export const useFetchStudent = <T>(id: string) => {
   };
   const { data, error, mutate, isLoading, isValidating } = useSWR(
     `parents/students${id}`,
-    fetcher
+    fetcher,
+    { revalidateOnFocus: false }
   );
 
   return {

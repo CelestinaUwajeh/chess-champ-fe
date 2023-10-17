@@ -1,27 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import childcartoon from "/public/child-cartoon.png";
 import Link from "next/link";
+
 import AppButton from "@/components/button";
 import { useFetchStudents } from "@/services/swr/parents";
 import { StudentType } from "@/utils/types";
-
-const children = [
-  {
-    name: "Sarry",
-    image: childcartoon,
-    enrolled: false,
-  },
-  {
-    name: "Johny",
-    image: childcartoon,
-    enrolled: true,
-  },
-  {
-    name: "Mecci",
-    image: childcartoon,
-    enrolled: false,
-  },
-];
 
 const Children = () => {
   const { data: children } = useFetchStudents<StudentType[]>();

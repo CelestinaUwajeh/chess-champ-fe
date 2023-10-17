@@ -51,7 +51,7 @@ const ChildrenAccount = () => {
           }}
           onError={() => {
             showToast({
-              message: "Failded to add child account",
+              message: "Failed to add child account",
               type: "error",
             });
           }}
