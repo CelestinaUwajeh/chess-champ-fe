@@ -37,7 +37,7 @@ const Delete = ({ title }: { title: string }) => {
         variant="primary"
         size="medium"
         width="w-[134px]"
-        disabled
+        onClick={() => setOpenPopover(true)}
       >
         Delete
       </AppButton>

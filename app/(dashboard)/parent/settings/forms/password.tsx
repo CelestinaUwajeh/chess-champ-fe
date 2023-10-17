@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -15,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import AppButton from "@/components/button";
 import { parentPasswordFormSchema } from "@/utils/form-schemas";
-import { useState } from "react";
 import { catchError, changePassword } from "@/services/endpoints/auth";
 import { showToast } from "@/utils";
 
