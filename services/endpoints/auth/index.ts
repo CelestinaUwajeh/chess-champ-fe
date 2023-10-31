@@ -15,6 +15,15 @@ export const loginApi = async <T>({
   return resp.data;
 };
 
+export const tutorRegistrationApi = async <T>({
+  params,
+}: {
+  params: { user_name: string; password: string; token: string };
+}) => {
+  const resp = await ChessChamps.post<T>("/tutors", params);
+  return resp.data;
+};
+
 type IParentStudentSignUpApi = {
   params: IStudentSignUpDto | IParentSignUpDto;
   url: string;
@@ -49,11 +58,12 @@ export const tutorSignUpApi = async ({ params }: ITutorSignUpApi) => {
   formData.append("first_name", params.first_name);
   formData.append("last_name", params.last_name);
   formData.append("email", params.email);
+  formData.append("phone_number", params.phone_number);
   formData.append("date_of_birth", params.date_of_birth);
   formData.append("gender", params.gender);
-  formData.append("cv", JSON.stringify(params.cv));
+  formData.append("cv", params.cv);
 
-  const resp = await ChessChamps.post("/tutors", formData, {
+  const resp = await ChessChamps.post("/tutor-requests", formData, {
     headers: {
       "Content-Type": "multipart/form-data",
     },

@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import { AiOutlineCloudUpload } from "react-icons/ai";
+import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -25,23 +28,13 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { DatePickerForm } from "./date-picker";
-import { useState } from "react";
 import FileLabel from "./file-label";
-import { AiOutlineCloudUpload } from "react-icons/ai";
 import { catchError, tutorSignUpApi } from "@/services/endpoints/auth";
 import { Gender, Prettify } from "@/utils/types";
 import Popover from "@/components/pop-over";
 import ModalContent from "./modal-content";
-
-const tutorFormSchema = z.object({
-  first_name: z.string().min(2).max(50),
-  last_name: z.string().min(2).max(50),
-  email: z.string().email("This is not a valid email.").nonempty(),
-  phone_number: z.string(),
-  date_of_birth: z.string().nonempty(),
-  gender: z.string().nonempty(),
-  cv: z.string(),
-});
+import MobileInput from "@/components/phone-input";
+import { tutorFormSchema } from "@/utils/form-schemas";
 
 export type TutorFormSchema = Prettify<
   Omit<z.infer<typeof tutorFormSchema>, "gender"> & {
@@ -59,16 +52,21 @@ const TutorForm = () => {
       phone_number: "",
       date_of_birth: "",
       gender: Gender.FEMALE,
-      cv: "",
+      cv: undefined,
     },
   });
+
+  const router = useRouter();
+
+  const [filename, setFileName] = useState("");
   const [openPopover, setOpenPopover] = useState(false);
   const [apiRunning, setApiRunning] = useState(false);
+
   const onSubmit = async (values: TutorFormSchema) => {
     setApiRunning(true);
     try {
       await tutorSignUpApi({
-        params: values,
+        params: values as Required<TutorFormSchema>,
       });
       setOpenPopover(true);
     } catch (error) {
@@ -87,7 +85,15 @@ const TutorForm = () => {
         }}
         displayCloseIcon={false}
       >
-        <ModalContent />
+        <ModalContent
+          description="Your application has been received and is being reviewed, we will reach
+        out to you shortly. Thank you."
+          buttonText="Okay"
+          onButtonClick={() => {
+            router.push("/");
+            setOpenPopover(false);
+          }}
+        />
       </Popover>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-6">
@@ -112,6 +118,32 @@ const TutorForm = () => {
                 <FormLabel>Last name</FormLabel>
                 <FormControl>
                   <Input placeholder="Enter last name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="phone_number"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Phone number</FormLabel>
+                <FormControl>
+                  <MobileInput field={field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem className="flex-1">
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="Enter email" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -169,18 +201,30 @@ const TutorForm = () => {
           <FormField
             control={form.control}
             name="cv"
-            render={({ field }) => (
+            render={({ field: { value, onChange, ...field } }) => (
               <FormItem className="flex-1">
                 <FormLabel>Upload CV</FormLabel>
                 <FormControl>
                   <div className="">
-                    <FileLabel htmlFor="cv">
+                    <FileLabel htmlFor="cv" className="flex items-center gap-4">
                       <div className="bg-[rgba(1,1,1,0.29)] py-2 px-[10px] flex items-center gap-2 rounded-[8px]">
                         <p className="text-white text-sm">Upload file</p>
                         <AiOutlineCloudUpload className="text-white" />
                       </div>
+                      <p className="text-black">{filename ? filename : ""}</p>
                     </FileLabel>
-                    <Input id="cv" type="file" {...field} className="hidden" />
+                    <Input
+                      id="cv"
+                      type="file"
+                      accept=".pdf"
+                      value={""}
+                      onChange={(e) => {
+                        setFileName(e.target.files?.[0].name!);
+                        onChange(e.target.files?.[0]);
+                      }}
+                      {...field}
+                      className="hidden"
+                    />
                   </div>
                 </FormControl>
                 <FormMessage />

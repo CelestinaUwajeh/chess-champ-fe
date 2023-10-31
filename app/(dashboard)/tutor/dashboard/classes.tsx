@@ -12,9 +12,10 @@ interface PropType {
   containerStyle?: string;
   data: {
     name: string;
-    img: StaticImageData;
+    img: StaticImageData | string;
     time?: string;
-    day: string;
+    day?: string;
+    percentage?: string;
     module: string;
     descAtt?: string;
   }[];
@@ -37,22 +38,29 @@ const Template = ({
         </Link>
       </div>
       <div className={containerStyle}>
-        {data.map((item) => {
-          const { name, img, time, day, module, descAtt } = item;
-          return (
-            <Card
-              key={name}
-              image={img}
-              header={name}
-              desc={module}
-              time={time}
-              latter={day}
-              className={className}
-              style={style}
-              descAtt={descAtt}
-            />
-          );
-        })}
+        {!data.length ? (
+          <p className="text-textBlack">You have no students at the moment.</p>
+        ) : (
+          <>
+            {data.map((item) => {
+              const { name, img, time, day, percentage, module, descAtt } =
+                item;
+              return (
+                <Card
+                  key={name}
+                  image={img}
+                  header={name}
+                  desc={module}
+                  time={time}
+                  latter={percentage || day}
+                  className={className}
+                  style={style}
+                  descAtt={descAtt}
+                />
+              );
+            })}
+          </>
+        )}
       </div>
     </div>
   );

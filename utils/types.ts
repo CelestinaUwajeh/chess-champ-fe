@@ -57,12 +57,35 @@ export enum USER_ROLE {
   PARENT = "PARENT",
 }
 
+export enum LEVEL {
+  BEGINNER = "Beginner",
+  INTERMEDIATE = "Intermediate",
+  ADVANCED = "Advanced",
+}
+
 export type TutorType = {
   date_of_birth: string;
   gender: Gender;
   total_students: number;
   total_classes: number;
-  level_of_experience: "Beginner" | "Intermediate" | "Advanced";
+  level_of_experience: LEVEL;
+};
+
+export type StudentPlan = {
+  sessions_used: string;
+  enrollment_date: string;
+  is_active: boolean;
+  pricing: {
+    name: LEVEL;
+  };
+  sessions: string;
+  id: string;
+  created_by: string;
+  created_at: string;
+  updated_at: string;
+  updated_by: string;
+  deleted_at: string;
+  deleted_by: string;
 };
 
 export type StudentType = {
@@ -83,4 +106,5 @@ export type StudentType = {
     last_active: string;
     tutor: TutorType;
   };
+  student_plans: StudentPlan;
 };

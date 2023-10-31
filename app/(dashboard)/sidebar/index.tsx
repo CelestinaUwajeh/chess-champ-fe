@@ -10,6 +10,7 @@ import { IoSettingsOutline, IoHelp } from "react-icons/io5";
 import { VscFileSubmodule } from "react-icons/vsc";
 import { IoMdTime } from "react-icons/io";
 import { MdOutlinePayment } from "react-icons/md";
+
 import { useAppSelector } from "@/redux/hooks";
 import { selectUser } from "@/redux/slices/auth";
 
@@ -101,7 +102,7 @@ const Sidebar = () => {
   const pathname = usePathname();
   const parentPath = usePathname().split("/")[1];
 
-  const sidelinks = useMemo(() => {
+  const sidelinks = (() => {
     if (parentPath === "parent") {
       return menu.parent;
     }
@@ -109,9 +110,8 @@ const Sidebar = () => {
       return menu.student;
     }
     return menu.tutor;
-  }, [parentPath]);
+  })();
   const user = useAppSelector(selectUser);
-  console.log({ user });
   return (
     <div className="fixed left-0 top-[107px] bottom-0 bg-white h-[calc(100vh-107px)] w-[254px] pl-12 py-12 flex flex-col">
       <div>

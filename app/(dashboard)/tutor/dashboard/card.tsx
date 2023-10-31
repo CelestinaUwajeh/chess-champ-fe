@@ -4,7 +4,7 @@ import { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 
 interface PropType {
-  image: StaticImageData;
+  image: StaticImageData | string;
   header: string;
   desc: string;
   descAtt?: string;

@@ -7,6 +7,9 @@ import DataTable, {
 } from "react-data-table-component";
 
 import img from "/public/student-place.png";
+import { useFetchTutorStudents } from "@/services/swr/tutors";
+import { useMemo } from "react";
+import { StudentType } from "@/utils/types";
 
 export const customStyles: TableStyles = {
   table: {
@@ -49,7 +52,7 @@ export const customStyles: TableStyles = {
 };
 
 interface StudentTableType {
-  img: StaticImageData;
+  img: string;
   name: string;
   username: string;
   class: string;
@@ -95,6 +98,16 @@ const students = [
 ];
 
 const Table = () => {
+  const { data } = useFetchTutorStudents<StudentType[]>();
+  const reformedStudents = useMemo(() => {
+    return (data || []).map(({ base_user, student_plans }) => ({
+      name: base_user?.first_name || "",
+      img: base_user?.profile_picture_url || "",
+      progress: "10%",
+      class: (student_plans?.pricing?.name as string) || "",
+      username: base_user?.user_name || "",
+    }));
+  }, [data]);
   const columns: TableColumn<StudentTableType>[] = [
     {
       name: "",
@@ -127,7 +140,7 @@ const Table = () => {
   return (
     <div className="mr-12">
       <DataTable
-        data={students}
+        data={reformedStudents}
         columns={columns}
         customStyles={customStyles}
         pagination={false}
