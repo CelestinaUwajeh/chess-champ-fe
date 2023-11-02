@@ -75,6 +75,7 @@ export type StudentPlan = {
   sessions_used: string;
   enrollment_date: string;
   is_active: boolean;
+  progress_in_percent: number;
   pricing: {
     name: LEVEL;
   };

@@ -1,14 +1,13 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
+import { useMemo } from "react";
+import Image from "next/image";
 import DataTable, {
   TableColumn,
   TableStyles,
 } from "react-data-table-component";
 
-import img from "/public/student-place.png";
 import { useFetchTutorStudents } from "@/services/swr/tutors";
-import { useMemo } from "react";
 import { StudentType } from "@/utils/types";
 
 export const customStyles: TableStyles = {
@@ -59,51 +58,13 @@ interface StudentTableType {
   progress: string;
 }
 
-const students = [
-  {
-    img,
-    name: "Jane Doe",
-    username: "Jane Doe",
-    class: "Beginner",
-    progress: "10%",
-  },
-  {
-    img,
-    name: "Jane Doe",
-    username: "Jane Doe",
-    class: "Beginner",
-    progress: "10%",
-  },
-  {
-    img,
-    name: "Jane Doe",
-    username: "Jane Doe",
-    class: "Beginner",
-    progress: "10%",
-  },
-  {
-    img,
-    name: "Jane Doe",
-    username: "Jane Doe",
-    class: "Beginner",
-    progress: "10%",
-  },
-  {
-    img,
-    name: "Jane Doe",
-    username: "Jane Doe",
-    class: "Beginner",
-    progress: "10%",
-  },
-];
-
 const Table = () => {
   const { data } = useFetchTutorStudents<StudentType[]>();
   const reformedStudents = useMemo(() => {
     return (data || []).map(({ base_user, student_plans }) => ({
       name: base_user?.first_name || "",
       img: base_user?.profile_picture_url || "",
-      progress: "10%",
+      progress: `${student_plans?.progress_in_percent || ""}%`,
       class: (student_plans?.pricing?.name as string) || "",
       username: base_user?.user_name || "",
     }));

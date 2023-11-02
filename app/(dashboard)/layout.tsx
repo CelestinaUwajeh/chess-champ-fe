@@ -6,6 +6,7 @@ import { useAppSelector } from "@/redux/hooks";
 import Navigator from "./navigator";
 import Sidebar from "./sidebar";
 import { selectUser } from "@/redux/slices/auth";
+import { useEffect } from "react";
 
 export default function AuthLayout({
   children,
@@ -14,9 +15,12 @@ export default function AuthLayout({
 }) {
   const user = useAppSelector(selectUser);
   const router = useRouter();
-  if (!user?.access_token) {
-    return router.push("/login");
-  }
+
+  useEffect(() => {
+    if (!user?.access_token) {
+      return router.push("/login");
+    }
+  }, [user?.access_token, router]);
   return (
     <main className="min-h-screen bg-bgPink">
       <Navigator />
